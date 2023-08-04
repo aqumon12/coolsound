@@ -1,0 +1,5 @@
+@charset "EUC-KR";
+header .section1 {padding-top:8px;}
+header .header-logo {float:left; margin-top: 20px;}
+header .inner {float:right; text-align:right;}
+header .nav1, .nav1:hover {color: #444; font-size: small;}
