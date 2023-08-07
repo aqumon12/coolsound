@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.coolsound.shop.dao.ProductMapper">
+ 	<select id="selectProductListByCategoryId" parameterType="int" resultType="com.coolsound.shop.domain.Product">
+ 		SELECT
+ 			`id`
+			, `name`
+			, `categoryId`
+			, `artist`
+			, `producer`
+			, `price`
+			, `image1`
+			, `image2`
+			, `image3`
+			, `detail`
+			, `releaseDate`
+			, `stock`
+			, `createdAt`
+			, `updatedAt`
+ 		FROM
+ 			`product`
+ 		WHERE `categoryId` = #{categoryId}
+ 	</select>
+ 	<select id="selectProductById" parameterType="int" resultType="com.coolsound.shop.domain.Product">
+ 		SELECT
+ 			`id`
+			, `name`
+			, `categoryId`
+			, `artist`
+			, `producer`
+			, `price`
+			, `image1`
+			, `image2`
+			, `image3`
+			, `detail`
+			, `releaseDate`
+			, `stock`
+			, `createdAt`
+			, `updatedAt`
+ 		FROM
+ 			`product`
+ 		WHERE `id` = #{id}
+ 	</select>
+ </mapper>
