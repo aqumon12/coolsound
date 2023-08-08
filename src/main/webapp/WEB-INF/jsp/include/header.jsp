@@ -14,9 +14,9 @@
 </div>
 <div class="header-mid">
 	<div class="mid-area">
-		<div class="bi">
+		<div class="bi pl-4">
 			<a href="#">
-				<img src="/static/images/logo_top.jpg" width="150"alt="coolsound">
+				<img src="/static/images/logo_top.jpg" width="130" alt="coolsound">
 			</a>
 		</div>
 		<div class="search-form">

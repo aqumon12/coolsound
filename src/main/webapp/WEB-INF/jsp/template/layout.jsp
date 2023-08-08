@@ -9,14 +9,14 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 
-<link rel="stylesheet" type="text/css" href="/static/css/style-temporary.css">
+<link rel="stylesheet" type="text/css" href="/static/css/style.css">
 </head>
 <body>
-	<div id="wrap" class="container">
+	<div id="wrap">
 		<header>
 			<jsp:include page="../include/header.jsp"/>
 		</header>
-		<div class="d-flex">
+		<div class="d-flex contents">
 			<nav class="col-2">
 				<jsp:include page="../include/nav.jsp" />
 			</nav>
