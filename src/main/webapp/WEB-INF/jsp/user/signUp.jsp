@@ -45,7 +45,7 @@
 						<th class="col1">*우편번호</th>
 						<td class="col2">
 							<input type="text" name="post" form="join_form" id="post" size="7" maxlength="15" readonly>	
-							<a class="btn btn-check" href="#">우편번호 검색</a>				
+							<a id="postBtn" class="btn btn-check" href="#">우편번호 검색</a>				
 						</td>
 					</tr>
 					<tr>
@@ -168,6 +168,7 @@ $(document).ready(function() {
 		}
 		if (!telRule.test(tel)) {
 			alert("휴대폰번호형식이 잘못되었습니다.\n 예)010-000(0)-0000");
+			return false;
 		}
 		
 		let url = $(this).attr('action');
@@ -183,9 +184,17 @@ $(document).ready(function() {
 			} else {
 				alert(data.errorMessage);
 			}
-			
 		});
-		
+	});
+	// 우편번호 검색 API
+	$('#postBtn').on('click', function() {
+		  new daum.Postcode({
+	            oncomplete: function(data) {
+	                $('#post').val(data.zonecode);
+	                $('#address1').val(data.address);
+	                $('#address2').focus();
+	            }
+	        }).open();
 	});
 });
 </script>

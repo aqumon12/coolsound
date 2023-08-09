@@ -53,6 +53,11 @@ public class UserRestController {
 		return result;
 	}
 	
+	/**
+	 * ID 중복확인 API
+	 * @param loginId
+	 * @return
+	 */
 	@RequestMapping("/is_duplicated_id")
 	public Map<String, Object> isDuplicatedId(
 			@RequestParam("loginId") String loginId) {
@@ -65,6 +70,16 @@ public class UserRestController {
 		if (userEntity != null) {
 			result.put("isDuplicateId", true);
 		}
+		return result;
+	}
+	
+	@PostMapping("/sign_up")
+	public Map<String, Object> signUp(
+			@RequestParam("loginId") String loginId) {
+		
+		Map<String, Object> result = new HashMap<>();
+		result.put("code", 1);
+		
 		return result;
 	}
 }
