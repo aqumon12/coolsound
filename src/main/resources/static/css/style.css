@@ -295,3 +295,39 @@ nav .menu li {
     letter-spacing: 1px;
 }
 
+#myPageWrap .my-page-nav a{
+	display: inline-block;
+    box-sizing: border-box;
+    vertical-align:middle;
+    text-align: center;
+    width: 150px;
+    height: 150px;
+    line-height: 135px;
+    border: 1px solid #8a8a8a;
+    background: #999;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+#myPageWrap .order-history-menu {
+	border-bottom: 3px solid #000000;
+    padding-bottom: 14px;
+}
+
+.person-info #signUpBtn{
+	display: inline-block;
+    box-sizing: border-box;
+    vertical-align: middle;
+    text-align: center;
+    width: 150px;
+    height: 51px;
+    line-height: 51px;
+    border: 1px solid #8a8a8a;
+    background: #8f8f8f;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}

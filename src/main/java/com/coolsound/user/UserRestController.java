@@ -22,6 +22,13 @@ public class UserRestController {
 	@Autowired
 	private UserBO userBO;
 	
+	/**
+	 * 로그인API
+	 * @param loginId
+	 * @param password
+	 * @param session
+	 * @return
+	 */
 	@PostMapping("/sign_in")
 	public Map<String, Object> signIn(
 			@RequestParam("loginId") String loginId,
@@ -42,6 +49,21 @@ public class UserRestController {
 		} else {
 			result.put("code", 500);
 			result.put("errorMessage", "존재하지 않는 사용자입니다.");
+		}
+		return result;
+	}
+	
+	@RequestMapping("/is_duplicated_id")
+	public Map<String, Object> isDuplicatedId(
+			@RequestParam("loginId") String loginId) {
+		UserEntity userEntity = userBO.getUserEntityByLoginId(loginId);
+		
+		Map<String, Object> result = new HashMap<>();
+		result.put("code", 1);
+		result.put("isDuplicateId", false);
+		
+		if (userEntity != null) {
+			result.put("isDuplicateId", true);
 		}
 		return result;
 	}
