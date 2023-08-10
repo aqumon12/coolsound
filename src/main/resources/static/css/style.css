@@ -331,3 +331,20 @@ nav .menu li {
     font-weight: 500;
     letter-spacing: 1px;
 }
+
+#product-detail .thumb-wrap {
+	float: left;
+    width: 700px;
+    text-align: center;
+}
+
+#product-detail .thumb {
+	width: 440px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+#product-detail .info {
+	float: right;
+    width: 500px;
+}
