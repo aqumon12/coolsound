@@ -75,10 +75,26 @@ public class UserRestController {
 	
 	@PostMapping("/sign_up")
 	public Map<String, Object> signUp(
-			@RequestParam("loginId") String loginId) {
+			@RequestParam("name") String name,
+			@RequestParam("loginId") String loginId,
+			@RequestParam("password") String password,
+			@RequestParam("email") String email,
+			@RequestParam("post") int post,
+			@RequestParam("address1") String address1,
+			@RequestParam("address2") String address2,
+			@RequestParam("tel") String tel) {
 		
+		String hashedPassword = EncryptUtils.getSHA256(password);
+		
+		Integer userId = userBO.addUser(name, loginId, hashedPassword, email, post, address1, address2, tel);
 		Map<String, Object> result = new HashMap<>();
-		result.put("code", 1);
+		if (userId != null) {
+			result.put("code", 1);
+			result.put("result", "성공");
+		} else {
+			result.put("code", 500);
+			result.put("errorMessage", "회원가입에 실패했습니다.");
+		}
 		
 		return result;
 	}

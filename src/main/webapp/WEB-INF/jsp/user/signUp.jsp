@@ -44,26 +44,26 @@
 					<tr>
 						<th class="col1">*우편번호</th>
 						<td class="col2">
-							<input type="text" name="post" form="join_form" id="post" size="7" maxlength="15" readonly>	
+							<input type="text" name="post" id="post" size="7" maxlength="15" readonly>	
 							<a id="postBtn" class="btn btn-check" href="#">우편번호 검색</a>				
 						</td>
 					</tr>
 					<tr>
 						<th class="col1">*집주소</th>
 						<td class="col2">
-							<input type="text" name="address1" form="join_form" id="address1" size="40" maxlength="100" readonly="readonly">
+							<input type="text" name="address1" id="address1" size="40" maxlength="100" readonly>
 						</td>
 					</tr>
 					<tr>
 						<th class="col1">*상세주소</th>
 						<td class="col2">
-							<input type="text" name="address2" form="join_form" id="address2" size="40" maxlength="100">
+							<input type="text" name="address2" id="address2" size="40" maxlength="100">
 						</td>
 					</tr>
 					<tr>
 						<th class="col1">*연락처</th>
 						<td class="col2">
-							<input type="text" name="tel" form="join_form" id="tel" size="40" maxlength="100">
+							<input type="text" name="tel" id="tel" size="40" maxlength="100">
 						</td>
 					</tr>
 				</tbody>
@@ -104,6 +104,18 @@ $(document).ready(function() {
 		});
 	});
 	
+	// 우편번호 검색 
+	$('#postBtn').on('click', function() {
+		  new daum.Postcode({
+	            oncomplete: function(data) {
+	            	document.getElementById("post").value = data.zonecode;
+	                document.getElementById("address1").value = data.address;
+	                $('#address2').focus();
+	            }
+	        }).open();
+	});
+	
+	// 회원가입 
 	$('#signUpForm').on('submit', function() {
 		let name = $('#name').val().trim();
 		let loginId = $('#loginId').val().trim(); 
@@ -113,7 +125,7 @@ $(document).ready(function() {
 		let post = $('#post').val(); 
 		let address1 = $('#address1').val(); 
 		let address2 = $('#address2').val().trim(); 
-		let tel = $('#tel').val().trim(); 
+		let tel = $('#tel').val().trim().toString(); 
 		var passRule = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/
 		var emailRule = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 		var telRule = /^(010){1}[0-9]{3,4}[0-9]{4}$/;
@@ -172,9 +184,9 @@ $(document).ready(function() {
 		}
 		
 		let url = $(this).attr('action');
-		console.log(url);
+		//console.log(url);
 		let params = $(this).serialize();
-		console.log(params);
+		//console.log(params);
 		
 		$.post(url, params)
 		.done(function(data) {
@@ -186,15 +198,6 @@ $(document).ready(function() {
 			}
 		});
 	});
-	// 우편번호 검색 API
-	$('#postBtn').on('click', function() {
-		  new daum.Postcode({
-	            oncomplete: function(data) {
-	                $('#post').val(data.zonecode);
-	                $('#address1').val(data.address);
-	                $('#address2').focus();
-	            }
-	        }).open();
-	});
+	
 });
 </script>

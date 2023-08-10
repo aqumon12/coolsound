@@ -38,7 +38,7 @@ public class UserEntity {
 	
 	private String email;
 	
-	private int tel;
+	private String tel;
 	
 	private int post;
 	
