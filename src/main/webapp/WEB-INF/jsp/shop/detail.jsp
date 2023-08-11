@@ -65,21 +65,25 @@
 											<ul>
 												<li class="d-flex"><span>${product.artist} -
 														${product.name}</span>
-													<div class="amt-ctrl">
-														<input type="text" id="amount" name="amount" value="1"
-															size="4" style="text-align: right; float: left;">
+													<div class="count-ctrl">
+														<input type="text" id="count" name="count" value="1"
+															size="4" style="text-align: right; float: left;" readonly>
 														<a href="#" class="btn-up"> <img
 															src="/static/images/basket_up.gif" alt="수량증가" border="0">
 														</a> <a href="#" class="btn-dw"> <img
 															src="/static/images/basket_down.gif" alt="수량감소"
 															border="0">
 														</a>
-													</div> <strong> <span class="total-price">${product.price}원</span>
-												</strong></li>
+													</div> 
+													<strong> 
+														<span class="total-price">${product.price}원</span>
+													</strong>
+												</li>
 											</ul>
 										</div>
 										<div class="inner-price">
-											<span>총 상품 금액</span> <strong class="total-price">${product.price}원</strong>
+											<span>총 상품 금액</span> 
+											<strong class="total-price">${product.price}원</strong>
 										</div>
 									</div>
 								</div>
@@ -91,7 +95,8 @@
 			</div>
 			<div class="prd-btns">
 				<div class="btn-area">
-					<a class="buy">상품구매</a> <a class="add-cart">장바구니 추가</a>
+					<a href="" class="buy">상품구매</a>
+					<a href="#" class="add-cart" data-product-id="${product.id}">장바구니 추가</a>
 				</div>
 			</div>
 		</div>
@@ -117,29 +122,48 @@
 		// 수량 증가
 		$('.btn-up').on('click', function(e) {
 			e.preventDefault();
-			let amount = $('#amount').val();
+			let count = $('#count').val();
 			let price = $('#price').data('price');
 			let totalPrice = $('.total-price').val();
-			amount++;
-			$('#amount').val(amount);
-			totalPrice = amount * price;
+			count++;
+			$('#count').val(count);
+			totalPrice = count * price;
 			$('.total-price').text(totalPrice + "원");
 		});
 
 		// 수량 감소
 		$('.btn-dw').on('click', function(e) {
 			e.preventDefault();
-			let amount = $('#amount').val();
-			if (amount <= 0) {
+			let count = $('#count').val();
+			if (count <= 1) {
+				alert("최소 구매 가능 수량이 1개입니다.");
 				return;
 			}
 
 			let price = $('#price').data('price');
 			let totalPrice = $('.total-price').val();
-			amount--;
-			$('#amount').val(amount);
-			totalPrice = amount * price;
+			count--;
+			$('#count').val(count);
+			totalPrice = count * price;
 			$('.total-price').text(totalPrice + "원");
+		});
+		
+		// 장바구니 추가
+		$('.add-cart').on('click', function(e) {
+			e.preventDefault();
+			let productId = $(this).data('product-id');
+			let count = $('#count').val();
+			
+			$.ajax({
+				type:"post"
+				, url:"/shop/add_to_cart"
+				, data:{"productId":productId, "count":count}
+				, success: function(data) {
+					if (data.code == 1) {
+						alert("장바구니추가");
+					}
+				}
+			});
 		});
 	});
 </script>

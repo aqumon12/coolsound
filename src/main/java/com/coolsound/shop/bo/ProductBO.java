@@ -20,4 +20,5 @@ public class ProductBO {
 	public Product getProductById(int id) {
 		return productMapper.selectProductById(id);
 	}
+	
 }
