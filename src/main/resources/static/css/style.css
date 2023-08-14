@@ -27,7 +27,18 @@ table {width: 100%;
     word-break: keep-all;
 }
 
-    
+.tb-center {
+    text-align: center;
+}
+
+.tb-right {
+    text-align: right;
+}
+
+.tb-left {
+    text-align: left;
+}
+     
 .contents {
 	width: 1260px;
 	margin:0 auto;
@@ -419,3 +430,34 @@ nav .menu li {
 	border-bottom: 1px solid #ddd;
 }
 
+#cartWrap .cart-header {
+    position: relative;
+    margin-top: 20px;
+    font-size: 0;
+    line-height: 0;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #d0d0d0;
+}
+
+.table-cart thead th {
+    padding: 7px 0 6px;
+    background-color: #ededed;
+}
+
+.table-cart tfoot td {
+    padding: 10px 0;
+    font-weight: bold;
+}
+
+.table-cart tbody tr td {
+    padding: 3px 0 3px;
+}
+
+.table-cart tbody td, .table-cart tfoot {
+    background: url(/static/images/dot1.gif) repeat-x 0 0;
+}
+
+#cartWrap .delivery {
+    margin-top: 20px;
+    text-align: center;
+}

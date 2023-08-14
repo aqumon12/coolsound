@@ -156,12 +156,18 @@
 			
 			$.ajax({
 				type:"post"
-				, url:"/shop/add_to_cart"
+				, url:"/cart/add_to_cart"
 				, data:{"productId":productId, "count":count}
 				, success: function(data) {
 					if (data.code == 1) {
-						alert("장바구니추가");
+						alert(count + "개의 상품이 장바구니에 담겼습니다.");
+						location.reload(true);
+					} else {
+						alert(data.errorMessage)
 					}
+				}
+				, error: function(reqeust, status, error) {
+					alert('이미 장바구니에 상품이 담겨있습니다.\n수량 조정은 장바구니에서 가능합니다.');
 				}
 			});
 		});

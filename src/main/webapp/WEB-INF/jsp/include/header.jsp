@@ -15,7 +15,7 @@
 				<li class="nav-item"><a href="/user/sign_out" class="nav-link nav1">로그아웃</a></li>
 				</c:otherwise>
 				</c:choose>
-				<li class="nav-item"><a href="#" class="nav-link nav1">장바구니</a></li>
+				<li class="nav-item"><a href="/user/cart_view" class="nav-link nav1">장바구니</a></li>
 				<li class="nav-item"><a href="/user/myPage_view" class="nav-link nav1">마이페이지</a></li>
 			</ul>
 		</nav>
