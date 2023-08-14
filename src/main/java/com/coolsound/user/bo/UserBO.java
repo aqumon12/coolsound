@@ -1,12 +1,16 @@
 package com.coolsound.user.bo;
 
-import javax.websocket.ClientEndpointConfig.Builder;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.info.ProjectInfoProperties.Build;
 import org.springframework.stereotype.Service;
 
+import com.coolsound.cart.bo.CartBO;
+import com.coolsound.cart.domain.Cart;
+import com.coolsound.shop.bo.ProductBO;
 import com.coolsound.user.dao.UserRepository;
+import com.coolsound.user.domain.CartView;
 import com.coolsound.user.entity.UserEntity;
 
 @Service
@@ -14,6 +18,12 @@ public class UserBO {
 	
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private CartBO cartBO;
+	
+	@Autowired
+	private ProductBO productBO;
 	
 	public UserEntity getUserEntityByLoginIdPassword(String loginId, String password) {
 		return userRepository.findByLoginIdAndPassword(loginId, password);
@@ -36,5 +46,20 @@ public class UserBO {
 				.tel(tel)
 				.build());
 		return userEntity == null ? null : userEntity.getId();
+	}
+	
+	public List<CartView> generateCartViewList(int userId) {
+		List<CartView> cartViewList = new ArrayList<>();
+		
+		List<Cart> cartList = cartBO.getCartListByUserId(userId);
+		for (Cart cart : cartList) {
+			
+			CartView cartView = new CartView();
+			
+			cartView.setCart(cart);
+			cartView.setProduct(productBO.getProductById(cart.getProductId()));
+			cartViewList.add(cartView);
+		}
+		return cartViewList;
 	}
 }

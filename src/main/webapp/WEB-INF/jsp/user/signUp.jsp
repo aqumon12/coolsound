@@ -188,11 +188,11 @@ $(document).ready(function() {
 		let params = $(this).serialize();
 		//console.log(params);
 		
-		$.post(url, params)
-		.done(function(data) {
-			if (data.code == 1) {
-				alert("회원가입을 축하합니다.");
-				location.href= "/user/sign_in_view";
+		$.post(url, params) 
+			.done(function(data) {
+				if (data.code == 1) {
+				alert("가입을 환영합니다! 로그인을 해주세요.");
+				location.href = "/user/sign_in_view";
 			} else {
 				alert(data.errorMessage);
 			}

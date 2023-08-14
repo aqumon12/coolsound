@@ -15,5 +15,12 @@ public interface CartMapper {
 			@Param("count") int count);
 	
 	public List<Cart> selectCartListByUserId(int userId);
+	
+	public void updateCart(
+			@Param("userId") int userId,
+			@Param("productId") int productId,
+			@Param("count") int count);
+	
+	public void deleteCartById(int cartId);
 }
 

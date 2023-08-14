@@ -25,10 +25,33 @@
  	
  	<select id="selectCartListByUserId" parameterType="int" resultType="com.coolsound.cart.domain.Cart">
  		SELECT
- 			``
+ 			`id`
+ 			, `userId`
+			, `productId`
+			, `count`
+			, `createdAt`
+			, `updatedAt`
  		FROM
  			`cart`
  		WHERE 
  			`userId` = #{userId}
  	</select>
+ 	
+ 	<update id="updateCart" parameterType="map">
+ 		UPDATE
+ 			`cart`
+ 		SET 
+ 			`count` = #{count}
+ 		WHERE 
+ 			`userId` = #{userId}
+ 			AND `productId` = #{productId}
+ 	</update>
+ 	
+ 	<delete id="deleteCartById" parameterType="int">
+ 		DELETE
+ 		FROM
+ 			`cart`
+ 		WHERE `id` = #{cartId}
+ 		
+ 	</delete>
  </mapper>

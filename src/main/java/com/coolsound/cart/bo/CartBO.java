@@ -19,5 +19,14 @@ public class CartBO {
 	}
 	
 	public List<Cart> getCartListByUserId(int userId) {
-		cartMapper.selectCartListByUserId(userId);
+		return cartMapper.selectCartListByUserId(userId);
+	}
+	
+	public void updateCart(int userId, int productId, int count) {
+		cartMapper.updateCart(userId, productId, count);
+	}
+	
+	public void deleteCartById(int cartId) {
+		cartMapper.deleteCartById(cartId);
+	}
 }

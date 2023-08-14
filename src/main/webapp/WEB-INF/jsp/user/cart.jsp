@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="cartWrap">
 	<div class="cart-header">
 		<img src="/static/images/cart_page.gif" alt="장바구니">
@@ -17,7 +18,6 @@
 					<col width="80">
 					<col width="90">
 					<col width="90">
-					<col width="90">
 				</colgroup>
 				<thead>
 					<tr>
@@ -26,7 +26,6 @@
 						<th scope="col"><div class="tb-center">제품명</div></th>
 						<th scope="col"><div class="tb-center">수량</div></th>
 						<th scope="col"><div class="tb-right">가격</div></th>
-						<th scope="col"><div class="tb-center">배송비</div></th>
 						<th scope="col"><div class="tb-center">취소</div></th>
 					</tr>
 				</thead>
@@ -34,93 +33,66 @@
 					<tr>
 						<td colspan="8">
 							<div class="tb-right">
-								총 구매금액 : <span class="MK_none_groupsale_total_price_sell"><span
-									class="MK_chg_none_groupsale_total_price_sell MK_change_price">29,300</span></span>원
-								<span class="MK_total_vat"></span> <span
-									class="MK_total_delivery"> + 배송료 <span
-									class="MK_chg_total_delivery MK_change_price">2,500</span>원
-								</span> <span class="MK_total_delivery_add"> + 추가배송료 <span
-									class="MK_chg_total_delivery_add MK_change_price">0</span>원
-								</span> <span class="MK_group_sale_price"></span> = <strong><span
-									class="MK_total_price"><span
-										class="MK_chg_total_price MK_change_price">31,800</span></span>원</strong> <span
-									class="MK_total_reserve"></span>
+								<span class="total-price" >
+									<c:set var = "total" value = "0" />
+									<c:forEach items="${list}" var="cartView">
+									<c:set var= "total" value="${total + cartView.product.price * cartView.cart.count}"/>
+									</c:forEach> 
+								총 구매금액 : ${total}원 + 배송료 2,500원 = </span>
+								<strong><span class="MK_chg_total_price MK_change_price">${total +2500}원</span></strong> 
 							</div>
 						</td>
 					</tr>
 				</tfoot>
 				<tbody>
+				<c:forEach items="${list}"  var="cartView" varStatus="status">
 					<tr>
-						<td><div class="tb-center">1</div></td>
+						<td><div class="tb-center" id="count">${status.count}</div></td>
 						<td>
 							<div class="tb-center">
 								<div class="thumb">
-									<a
-										href="/shop/shopdetail.html?branduid=1255514&amp;xcode=001&amp;mcode=&amp;scode=&amp;GfDT=bmp8W1w%3D"><img
-										src="/shopimages/cooltrack/0010100004813.jpg?1545983962"
-										alt="상품 섬네일" title="상품 섬네일"></a>
+									<a href="/shop/detail_view?id=${cartView.cart.productId}">
+										<img src="${cartView.product.image1}" alt="상품 섬네일">
+									</a>
 								</div>
 							</div>
 						</td>
 						<td>
 							<div class="tb-left">
-								<a
-									href="/shop/shopdetail.html?branduid=1255514&amp;xcode=001&amp;mcode=&amp;scode=&amp;GfDT=bmp8W1w%3D">석상근
-									- Memory </a> <span class="MK-product-icons"></span>
+								<a	href="/shop/detail_view?id=${cartView.product.id}">
+								${cartView.product.artist} - ${cartView.product.name}
+								</a>
 							</div>
 						</td>
 						<td>
 							<div class="tb-center">
 								<div class="opt-spin">
-									<input type="text" name="amount" value="1" class="txt-spin"
-										onchange="realtime_quantity_ctrl('set_amount',0,'upd',0, ''); "
-										onkeypress="quantity_ctrl_enter();"> <span
-										class="btns"> <a
-										href="javascript:realtime_quantity_ctrl('up', 0, 'upd', 0, '')"><img
-											class="btn-up" src="/images/common/basket_up.gif"></a> <a
-										href="javascript:realtime_quantity_ctrl('down', 0, 'upd', 0, '')"><img
-											class="btn-dw" src="/images/common/basket_down.gif"></a>
-									</span>
+									<input type="text" id="count" value="${cartView.cart.count}" size="4" style="text-align: right; float: left;" readonly>
+									<a href="#" class="btn-up" data-product-id="${cartView.product.id}"> 
+										<img src="/static/images/basket_up.gif" alt="수량증가" border="0" >
+									</a> 
+									<a href="#" class="btn-dw" data-product-id="${cartView.product.id}"> 
+										<img src="/static/images/basket_down.gif" alt="수량감소" border="0" >
+									</a>
 								</div>
 							</div>
 						</td>
 						<td><div class="tb-right tb-bold tb-price">
-								<span><span class="MK_price_sell1255514_1">11,500</span></span>원
+								<span id="price" >${cartView.product.price * cartView.cart.count} </span>원
+								
 							</div></td>
-						<td><div class="tb-center tb-delivery">
-								<div class="MS_tb_delivery">
-									<span class="MS_deli_txt" onmouseover="overcase(this, '0')"
-										onmouseout="outcase(this, '0')"> <span
-										class="MS_deli_title MS_deli_block">[기본배송]</span><span
-										class="MS_deli_desc MS_deli_block">차등</span>
-									</span>
-									<div id="deliverycase0" class="MS_layer_delivery"
-										style="display: none;">
-										<dl>
-											<dt>배송조건 : 기본배송(차등)</dt>
-											<dd>
-												주문금액에 따라서 배송비가 <br> <span class="MS_highlight">차등적으로
-													청구됩니다.</span>
-											</dd>
-										</dl>
-										<span class="bull"></span>
-										<iframe id="deliverycase_iframe0"
-											class="MS_layer_delivery_iframe" frameborder="no" border="0"></iframe>
-									</div>
-								</div>
-							</div></td>
+						
 						<td>
 							<div class="tb-center">
-								<span class="d-block"><a
-									href="javascript:basket_wish_login();"><img
-										src="/images/d3/modern_simple/btn/btn_h19_wish_prd.gif"
-										alt="관심상품" title="관심상품"></a></span> <span class="d-block"><a
-									href="javascript:send_basket(0, 'del')"><img
-										src="/images/d3/modern_simple/btn/btn_h19_del.gif" alt="삭제"
-										title="삭제"></a></span>
+								<span class="d-block">
+									<a href="#" class="delete-btn" data-cart-id="${cartView.cart.id}">
+										<img src="/static/images/btn_del.gif" alt="삭제">
+									</a>
+								</span>
 							</div>
 						</td>
 					</tr>
+				</c:forEach>
 				</tbody>
 			</table>
 		</div>
@@ -130,4 +102,78 @@
 			class="MK_chg_delivery_message">2,500</span>원을 청구합니다.
 		</span>
 	</div>
+
 </div>
+<script>
+$(document).ready(function() {
+	// 수량 증가
+	$('.btn-up').on('click', function(e) {
+		e.preventDefault();
+		let count = $(this).prev().val();
+		let price = $('#price').data('price');
+		let productId = $(this).data('product-id');
+		count++;
+		$(this).prev().val(count);
+		totalPrice = count * price;
+		
+		$.ajax({
+			type:"post"
+			, url:"/cart/update_cart"
+			, data:{"productId":productId, "count":count}
+			, success:function(data) {
+				if (data.code == 1) {
+					location.reload(true);
+				}
+			}
+		});
+	});
+
+	// 수량 감소
+	$('.btn-dw').on('click', function(e) {
+		e.preventDefault();
+		let count = $(this).siblings('#count').val();
+		console.log(count)
+		if (count <= 1) {
+			alert("최소 구매 가능 수량이 1개입니다.");
+			return;
+		}
+
+		let price = $('#price').data('price');
+		let totalPrice = $('.total-price').val();
+		let productId = $(this).data('product-id');
+		count--;
+		$(this).siblings('#count').val(count);
+		
+		$.ajax({
+			type:"post"
+			, url:"/cart/update_cart"
+			, data:{"productId":productId, "count":count}
+			, success:function(data) {
+				if (data.code == 1) {
+					location.reload(true);
+				}
+			}
+		});
+	});
+	
+	$('.delete-btn').on('click', function() {
+		let cartId = $(this).data('cart-id');
+		if (confirm("정말 삭제하시겠습니까?")) {
+			$.ajax({
+				type:"delete"
+				, url:"/cart/delete_cart"
+				, data:{"cartId":cartId}
+				, success:function(data) {
+					if (data.code == 1) {
+						location.reload(true);
+					}
+				}
+				, error:function(request, status, error) {
+					alert("장바구니삭제에 실패했습니다.");
+				}
+			});
+			
+		}
+	});
+})
+</script>

@@ -66,13 +66,12 @@
 												<li class="d-flex"><span>${product.artist} -
 														${product.name}</span>
 													<div class="count-ctrl">
-														<input type="text" id="count" name="count" value="1"
-															size="4" style="text-align: right; float: left;" readonly>
-														<a href="#" class="btn-up"> <img
-															src="/static/images/basket_up.gif" alt="수량증가" border="0">
-														</a> <a href="#" class="btn-dw"> <img
-															src="/static/images/basket_down.gif" alt="수량감소"
-															border="0">
+														<input type="text" id="count" name="count" value="1" size="4" style="text-align: right; float: left;" readonly>
+														<a href="#" class="btn-up"> 
+															<img src="/static/images/basket_up.gif" alt="수량증가" border="0">
+														</a> 
+														<a href="#" class="btn-dw"> 
+															<img src="/static/images/basket_down.gif" alt="수량감소" border="0">
 														</a>
 													</div> 
 													<strong> 
@@ -156,7 +155,7 @@
 			
 			$.ajax({
 				type:"post"
-				, url:"/cart/add_to_cart"
+				, url:"/cart/add_to_cart" 
 				, data:{"productId":productId, "count":count}
 				, success: function(data) {
 					if (data.code == 1) {

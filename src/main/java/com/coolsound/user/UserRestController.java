@@ -72,7 +72,18 @@ public class UserRestController {
 		}
 		return result;
 	}
-	
+	/**
+	 * 회원가입 API
+	 * @param name
+	 * @param loginId
+	 * @param password
+	 * @param email
+	 * @param post
+	 * @param address1
+	 * @param address2
+	 * @param tel
+	 * @return
+	 */
 	@PostMapping("/sign_up")
 	public Map<String, Object> signUp(
 			@RequestParam("name") String name,

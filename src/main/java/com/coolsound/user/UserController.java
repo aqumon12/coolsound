@@ -11,15 +11,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.coolsound.cart.bo.CartBO;
-import com.coolsound.cart.domain.Cart;
+import com.coolsound.user.bo.UserBO;
+import com.coolsound.user.domain.CartView;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
 	
 	@Autowired
-	private CartBO cartBO;
+	private UserBO userBO;
+	
 	
 	@GetMapping("/sign_up_view")
 	public String signUpView(Model model) {
@@ -56,9 +57,9 @@ public class UserController {
 	
 	@GetMapping("/cart_view")
 	public String cartView(Model model, HttpSession session) {
-		Integer userId = (Integer)session.getAttribute("userId");
-		List<Cart> cartList = cartBO.getCartListByUserId(userId);
-		model.addAttribute("cartList", cartList);
+		int userId = (int)session.getAttribute("userId");
+		List<CartView> list = userBO.generateCartViewList(userId);
+		model.addAttribute("list", list);
 		model.addAttribute("view", "user/cart");
 		return "template/layout";
 	}
