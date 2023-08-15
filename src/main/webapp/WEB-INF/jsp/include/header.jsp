@@ -24,7 +24,7 @@
 <div class="header-mid">
 	<div class="mid-area">
 		<div class="bi pl-4">
-			<a href="#">
+			<a href="/shop/main_view">
 				<img src="/static/images/logo_top.jpg" width="130" alt="coolsound">
 			</a>
 		</div>

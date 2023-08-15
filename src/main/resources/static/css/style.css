@@ -461,3 +461,26 @@ nav .menu li {
     margin-top: 20px;
     text-align: center;
 }
+
+.prd-list .thumb {
+    width: 110px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 0;
+    line-height: 0;
+    border: 1px solid #dedede;
+}
+
+.prd-list .dsc {
+    margin-top: 5px;
+    padding: 0 10px;
+    color: #666;
+    text-align: center;
+}
+
+.prd-list .price {
+    margin-top: 2px;
+    font-weight: bold;
+    color: #000;
+    text-align: center;
+}
