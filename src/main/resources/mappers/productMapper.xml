@@ -21,7 +21,10 @@
 			, `updatedAt`
  		FROM
  			`product`
+ 			<if test= "categoryId != null">
  		WHERE `categoryId` = #{categoryId}
+ 			</if>
+ 		ORDER BY `createdAt` DESC
  	</select>
  	<select id="selectProductById" parameterType="int" resultType="com.coolsound.shop.domain.Product">
  		SELECT

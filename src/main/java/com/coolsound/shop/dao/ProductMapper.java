@@ -8,7 +8,7 @@ import com.coolsound.shop.domain.Product;
 
 @Repository
 public interface ProductMapper {
-	public List<Product> selectProductListByCategoryId(int categoryId);
+	public List<Product> selectProductListByCategoryId(Integer categoryId);
 	
 	public Product selectProductById(int id);
 }

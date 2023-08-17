@@ -27,7 +27,7 @@ public class ShopController {
 	
 	@GetMapping("/category_view")
 	public String categoryView(
-			@RequestParam("categoryId") int categoryId,
+			@RequestParam(value = "categoryId", required = false) Integer categoryId,
 			Model model) {
 		List<Product> productList = productBO.getProductListByCategoryId(categoryId);
 		model.addAttribute("view", "shop/category");

@@ -13,7 +13,7 @@ public class ProductBO {
 	@Autowired
 	private ProductMapper productMapper;
 	
-	public List<Product> getProductListByCategoryId(int categoryId) {
+	public List<Product> getProductListByCategoryId(Integer categoryId) {
 		return productMapper.selectProductListByCategoryId(categoryId);
 	}
 	

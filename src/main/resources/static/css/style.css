@@ -484,3 +484,22 @@ nav .menu li {
     color: #000;
     text-align: center;
 }
+
+.admin-header {
+	border-bottom: 3px solid #999;
+}
+
+.admin-menu .nav-link {
+	color:rgb(0, 0, 160);
+	font-size: 30px;
+}
+
+.admin-menu .nav-link:hover {
+	text-decoration: underline;
+	color:rgb(0, 0, 160);
+	font-size: 32px;
+}
+
+.product-list table {
+	text-align: center;
+}
