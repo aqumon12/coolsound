@@ -126,7 +126,7 @@ $(document).ready(function() {
 		let address1 = $('#address1').val(); 
 		let address2 = $('#address2').val().trim(); 
 		let tel = $('#tel').val().trim().toString(); 
-		var passRule = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/
+		var passRule = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
 		var emailRule = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 		var telRule = /^(010){1}[0-9]{3,4}[0-9]{4}$/;
 		
