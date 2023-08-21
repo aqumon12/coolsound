@@ -13,7 +13,6 @@
 			, `price`
 			, `image1`
 			, `image2`
-			, `image3`
 			, `detail`
 			, `releaseDate`
 			, `stock`
@@ -36,7 +35,6 @@
 			, `price`
 			, `image1`
 			, `image2`
-			, `image3`
 			, `detail`
 			, `releaseDate`
 			, `stock`
@@ -46,4 +44,40 @@
  			`product`
  		WHERE `id` = #{id}
  	</select>
+ 	
+ 	<insert id="insertProduct" parameterType="map">
+ 		INSERT INTO `product`
+ 		(
+ 			`name`
+			, `categoryId`
+			, `artist`
+			, `producer`
+			, `price`
+			, `image1`
+			, `image2`
+			, `detail`
+			, `releaseDate`
+			, `stock`
+			, `createdAt`
+			, `updatedAt`
+ 		)
+ 		VALUES
+ 		(
+ 			#{name}
+			, #{categoryId}
+			, #{artist}
+			, #{producer}
+			, #{price}
+			, #{image1}
+			, #{image2}
+			, #{detail}
+			, #{releaseDate}
+			, #{stock}
+			, NOW()
+			, NOW()
+ 		)
+ 		
+ 		
+ 		
+ 	</insert>
  </mapper>

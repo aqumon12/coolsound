@@ -14,7 +14,6 @@ public class Product {
 	private int price;
 	private String image1;
 	private String image2;
-	private String image3;
 	private String detail;
 	private Date releaseDate;
 	private String stock;
