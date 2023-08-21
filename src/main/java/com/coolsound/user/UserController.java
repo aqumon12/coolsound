@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.coolsound.aop.TimeTrace;
 import com.coolsound.user.bo.UserBO;
 import com.coolsound.user.domain.CartView;
 
@@ -21,13 +22,14 @@ public class UserController {
 	@Autowired
 	private UserBO userBO;
 	
-	
+	@TimeTrace
 	@GetMapping("/sign_up_view")
 	public String signUpView(Model model) {
 		model.addAttribute("view", "user/signUp");
 		return "template/layout";
 	}
 	
+	@TimeTrace
 	@GetMapping("/sign_in_view")
 	public String signInView(Model model) {
 		model.addAttribute("view", "user/signIn");
