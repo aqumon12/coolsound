@@ -39,8 +39,8 @@
 						<fmt:formatDate value="${parsedUpdatedAt}" pattern="yyyy-MM-dd HH:mm:ss"/>
 					</a>
 				</td>
-				<td><a id="updateBtn" class="btn btn-secondary">수정</a></td>
-				<td><a id="deleteBtn" class="btn btn-light">삭제</a></td>
+				<td><a class="updateBtn btn btn-secondary" data-product-id="${product.id}">수정</a></td>
+				<td><a class="deleteBtn btn btn-light">삭제</a></td>
 			</tr>
 		</c:forEach>
 		</tbody>
@@ -48,5 +48,10 @@
 </div>
 
 <script>
-	
+$(document).ready(function() {
+	$(".updateBtn").on('click', function() {
+		let productId = $(this).data('product-id');
+		window.open("/admin/update_product_view?id="+ productId, "상품 수정", "width=1000");
+	});
+});
 </script>

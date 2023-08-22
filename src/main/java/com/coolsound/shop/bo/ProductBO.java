@@ -28,11 +28,11 @@ public class ProductBO {
 		return productMapper.selectProductById(id);
 	}
 	
-	public void addProduct(String loginId, String name, int categoryId, String artist, String producer, int price, int stock, Date releaseDate, String detail, MultipartFile image1, MultipartFile image2) {
-		String imagePath1 = fileManager.saveFile(loginId, image1);
+	public void addProduct(String adminLoginId, String name, int categoryId, String artist, String producer, int price, int stock, Date releaseDate, String detail, MultipartFile image1, MultipartFile image2) {
+		String imagePath1 = fileManager.saveFile(adminLoginId, image1);
 		String imagePath2 = null;
 		if (image2 != null) {
-			imagePath2 = fileManager.saveFile(loginId, image2);
+			imagePath2 = fileManager.saveFile(adminLoginId, image2);
 		}
 		productMapper.insertProduct(name, categoryId, artist, producer, price, stock, releaseDate, detail, imagePath1, imagePath2);
 	}

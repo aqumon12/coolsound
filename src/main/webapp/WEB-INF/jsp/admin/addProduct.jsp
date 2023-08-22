@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <div>
-	<form id="addProductForm" method="post" action="/admin/add_product">
+	<div id="addProductForm">
 		<div class="product-info">
 			<table class="product-tb">
 				<colgroup>
@@ -80,7 +80,7 @@
 			</table>
 			<input type="submit" id="addProductBtn" class="btn btn-secondary" value="상품등록">
 		</div>
-	</form>
+	</div>
 </div>
 
 <script>
@@ -88,10 +88,9 @@ $(document).ready(function() {
 	$('#releaseDate').datepicker({
 		  dateFormat:"yy-mm-dd"
 	});
-	
-	$('#addProductForm').on('submit', function() {
+	$('#addProductBtn').on('click', function() {
 		let name = $('#name').val().trim();
-		let categoryId = $('#selectCategory option:selected').val();
+		let categoryId = $('#selectCategory').val();
 		let artist = $('#artist').val().trim();
 		let producer = $('#producer').val().trim();
 		let price = $('#price').val().trim();
@@ -169,7 +168,7 @@ $(document).ready(function() {
 					alert('상품이 등록되었습니다.');
 					location.href = "/admin/product_list_view";
 				} else {
-					alert("");
+					alert(releaseDate);
 				}
 			}
 			, error:function(request, status, error) {

@@ -2,11 +2,11 @@
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="wrap">
-	<div class="admin-header">
+	<div class="admin-header d-flex">
 		<h1>Admin</h1>
 			<c:if test="${adminId != null}">
-			<li class="nav item"><a href="#" class="nav-link nav1">${userName}´Ô</a></li>
-			<li class="nav-item"><a href="/admin/sign_out" class="nav-link nav1">·Î±×¾Æ¿ô</a></li>
+			<span>${adminName}´Ô</span>
+			<span><a href="/admin/sign_out">·Î±×¾Æ¿ô</a></span>
 			</c:if>
 	</div>
 </div>
