@@ -7,6 +7,8 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,8 +41,9 @@ public class AdminRestController {
 		
 		Map<String, Object> result = new HashMap<>();
 		if (adminEntity != null) {
-			session.setAttribute("userId", adminEntity.getId());
-			session.setAttribute("userName", adminEntity.getName());
+			session.setAttribute("adminId", adminEntity.getId());
+			session.setAttribute("adminLoginId", adminEntity.getLoginId());
+			session.setAttribute("adminName", adminEntity.getName());
 				
 			result.put("code", 1);
 			result.put("result", "성공");
@@ -55,18 +58,18 @@ public class AdminRestController {
 	@PostMapping("add_product")
 	public Map<String, Object> addProduct(
 			@RequestParam("name") String name,
-			@RequestParam("categoryId") int categoryId,
+			@RequestParam(value = "categoryId", required=false) Integer categoryId,
 			@RequestParam("artist") String artist,
 			@RequestParam("producer") String producer,
 			@RequestParam("price") int price,
 			@RequestParam("stock") int stock,
-			@RequestParam("releaseDate") Date releaseDate,
+			@RequestParam("releaseDate") @DateTimeFormat(pattern="yy-mm-dd") Date releaseDate,
 			@RequestParam("detail") String detail,
 			@RequestParam("image1") MultipartFile image1,
 			@RequestParam(value = "image2", required = false) MultipartFile image2,
 			HttpSession session) {
-		String loginId = (String)session.getAttribute("loginId");
-		productBO.addProduct(loginId, name, categoryId, artist, producer, price, stock, releaseDate, detail, image1, image2);
+		String adminLoginId = (String)session.getAttribute("adminLoginId");
+		productBO.addProduct(adminLoginId, name, categoryId, artist, producer, price, stock, releaseDate, detail, image1, image2);
 		Map<String, Object> result = new HashMap<>();
 		result.put("code", 1);
 		result.put("result", "성공");

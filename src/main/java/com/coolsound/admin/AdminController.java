@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.coolsound.shop.bo.ProductBO;
 import com.coolsound.shop.domain.Product;
@@ -48,5 +49,13 @@ public class AdminController {
 	public String adOrderListView(Model model) {
 		model.addAttribute("view", "admin/orderList");
 		return "template/adminLayout";
+	}
+	
+	@GetMapping("/update_product_view")
+	public String adUpdateProductView(
+			@RequestParam("id") int id,
+			Model model) {
+		model.addAttribute("product", productBO.getProductById(id));
+		return "admin/updateProduct";
 	}
 }
