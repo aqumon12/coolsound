@@ -16,8 +16,9 @@
 						</div>
 					</li>
 					<li class="dsc">
-						<a href="/shop/detail_view?id=${product.id}">[${product.producer}]
-							${product.artist} - ${product.name}</a>
+						<a href="/shop/detail_view?id=${product.id}">
+							${product.artist} - ${product.name}
+						</a>
 					</li>
 					<li class="price"><strong>${product.price}¿ø</strong></li>
 				</ul>
