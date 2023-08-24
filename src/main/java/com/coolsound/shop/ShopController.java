@@ -44,4 +44,14 @@ public class ShopController {
 		model.addAttribute("view", "shop/detail");
 		return "template/layout";
 	}
+	
+	@GetMapping("/search_view")
+	public String searchView(
+			@RequestParam("search") String search,
+			Model model) {
+		List<Product> productList = productBO.getProductListByNameOrArtist(search);
+		model.addAttribute("productList", productList);
+		model.addAttribute("view", "shop/search");
+		return "template/layout";
+	}
 }

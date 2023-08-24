@@ -76,8 +76,26 @@
 			, NOW()
 			, NOW()
  		)
- 		
- 		
- 		
  	</insert>
+ 	
+ 	<select id="selectProductListByNameOrArtist" parameterType="String" resultType="com.coolsound.shop.domain.Product">
+ 		SELECT
+ 			`id`
+			, `name`
+			, `categoryId`
+			, `artist`
+			, `producer`
+			, `price`
+			, `image1`
+			, `image2`
+			, `detail`
+			, `releaseDate`
+			, `stock`
+			, `createdAt`
+			, `updatedAt`
+ 		FROM
+ 			`product`
+ 		WHERE name like CONCAT('%',#{search},'%') OR artist like  CONCAT('%',#{search},'%')
+ 		ORDER BY `createdAt` DESC
+ 	</select>
  </mapper>

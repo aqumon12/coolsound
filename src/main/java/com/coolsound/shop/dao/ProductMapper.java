@@ -26,4 +26,6 @@ public interface ProductMapper {
 			@Param("detail") String detail,
 			@Param("image1") String image1,
 			@Param("image2") String image2);
+	
+	public List<Product> selectProductListByNameOrArtist(String search);
 }

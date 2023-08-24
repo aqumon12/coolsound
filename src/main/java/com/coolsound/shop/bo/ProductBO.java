@@ -36,4 +36,8 @@ public class ProductBO {
 		}
 		productMapper.insertProduct(name, categoryId, artist, producer, price, stock, releaseDate, detail, imagePath1, imagePath2);
 	}
+	
+	public List<Product> getProductListByNameOrArtist(String search) {
+		return productMapper.selectProductListByNameOrArtist(search);
+	}
 }

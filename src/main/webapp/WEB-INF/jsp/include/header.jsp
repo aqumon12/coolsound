@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="header-top">
 	<div class="top-area clear">
@@ -7,16 +7,16 @@
 			<ul class="nav gnb clear">
 			<c:choose>
 				<c:when test="${userId == null}">
-				<li class="nav-item"><a href="/user/sign_in_view" class="nav-link nav1">·Î±×ÀÎ</a></li>
-				<li class="nav-item"><a href="/user/sign_up_view" class="nav-link nav1">È¸¿ø°¡ÀÔ</a></li>
+				<li class="nav-item"><a href="/user/sign_in_view" class="nav-link nav1">ë¡œê·¸ì¸</a></li>
+				<li class="nav-item"><a href="/user/sign_up_view" class="nav-link nav1">íšŒì›ê°€ì…</a></li>
 				</c:when>
 				<c:otherwise>
-				<li class="nav item"><a href="#" class="nav-link nav1">${userName}´Ô</a></li>
-				<li class="nav-item"><a href="/user/sign_out" class="nav-link nav1">·Î±×¾Æ¿ô</a></li>
+				<li class="nav item"><a href="#" class="nav-link nav1">${userName}ë‹˜</a></li>
+				<li class="nav-item"><a href="/user/sign_out" class="nav-link nav1">ë¡œê·¸ì•„ì›ƒ</a></li>
 				</c:otherwise>
 				</c:choose>
-				<li class="nav-item"><a href="/user/cart_view" class="nav-link nav1">Àå¹Ù±¸´Ï</a></li>
-				<li class="nav-item"><a href="/user/myPage_view" class="nav-link nav1">¸¶ÀÌÆäÀÌÁö</a></li>
+				<li class="nav-item"><a href="/user/cart_view" class="nav-link nav1">ì¥ë°”êµ¬ë‹ˆ</a></li>
+				<li class="nav-item"><a href="/user/myPage_view" class="nav-link nav1">ë§ˆì´í˜ì´ì§€</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -28,15 +28,31 @@
 				<img src="/static/images/logo_top.jpg" width="130" alt="coolsound">
 			</a>
 		</div>
-		<div class="search-form">
-			<form method="post" action="#">
-				<div class="search-box">
-					<input name="search" class="search-word">
-					<a href="#">
-						<img src="/static/images/btn_search.png" alt="°Ë»ö">
-					</a>
-				</div>
-			</form>
+		<div class="search-area">
+		<div class="search-box">
+			<input name="search" class="search-word" onkeyup="enterkey();">
+			<button class="btn" id="searchBtn">
+				<img src="/static/images/btn_search.png" alt="ê²€ìƒ‰">
+			</button>
+		</div>
 		</div>
 	</div>
 </div>
+<script>
+function enterkey() {
+	if (window.event.keyCode == 13) {
+		$("#searchBtn").click();
+		}
+	}
+$(document).ready(function() {
+	$('#searchBtn').on('click', function() {
+		let search = $('.search-word').val().trim();
+		if (search == "") {
+			alert('ê²€ìƒ‰ì–´ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”!');
+			return false;
+		}
+	
+		window.location.href = "/shop/search_view?search=" + encodeURI(search);
+	})
+});
+</script>
