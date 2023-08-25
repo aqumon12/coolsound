@@ -65,4 +65,10 @@ public class UserController {
 		model.addAttribute("view", "user/cart");
 		return "template/layout";
 	}
+	
+	@GetMapping("/review_view")
+	public String reviewView(Model model) {
+		model.addAttribute("view", "user/review");
+		return "template/layout";
+	}
 }
