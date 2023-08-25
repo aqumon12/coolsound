@@ -2,6 +2,9 @@ package com.coolsound.admin;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +26,16 @@ public class AdminController {
 	public String adSignInView(Model model) {
 		model.addAttribute("view", "admin/signIn");
 		return "template/adminLayout";
+	}
+	
+	@GetMapping("/sign_out")
+	public String signOut(HttpSession session,
+			Model model) {
+		session.removeAttribute("adminId");
+		session.removeAttribute("adminLoginId");
+		session.removeAttribute("adminName");
+		model.addAttribute("view", "admin/signIn");
+	    return "template/adminLayout";
 	}
 	
 	@GetMapping("/main_view")
