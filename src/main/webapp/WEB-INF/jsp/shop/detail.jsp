@@ -6,9 +6,7 @@
 		<div class="thumb-wrap">
 			<div class="thumb-info">
 				<div class="thumb">
-					<img
-						src="https://cdn.pixabay.com/photo/2023/08/02/18/21/yoga-8165759_1280.jpg"
-						width="440" alt="상품이미지">
+					<img src="${product.image1}" width="440" height="400" alt="상품이미지">
 				</div>
 			</div>
 		</div>

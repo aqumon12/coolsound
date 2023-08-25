@@ -13,7 +13,8 @@
 				<ul class="info">
 					<li>
 						<div class="thumb">
-							<a href="/shop/detail_view?id=${product.id}"> <img src="" alt="썸네일">
+							<a href="/shop/detail_view?id=${product.id}">
+								<img src="${product.image1}" alt="썸네일" width="320" height="293">
 							</a>
 						</div>
 					</li>

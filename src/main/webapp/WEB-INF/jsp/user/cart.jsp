@@ -52,7 +52,7 @@
 							<div class="tb-center">
 								<div class="thumb">
 									<a href="/shop/detail_view?id=${cartView.cart.productId}">
-										<img src="${cartView.product.image1}" alt="惑前 级匙老">
+										<img src="${cartView.product.image1}" alt="惑前 级匙老" width="80">
 									</a>
 								</div>
 							</div>

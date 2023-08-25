@@ -11,7 +11,7 @@
 				<ul class="info">
 					<li>
 						<div class="thumb">
-							<a href="/shop/detail_view?id=${product.id}"> <img src="" alt="½æ³×ÀÏ">
+							<a href="/shop/detail_view?id=${product.id}"> <img src="${product.image1}" width="320" height="293" alt="½æ³×ÀÏ">
 							</a>
 						</div>
 					</li>
