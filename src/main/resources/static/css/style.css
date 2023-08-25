@@ -167,8 +167,6 @@ nav .menu li {
 }
 
 .prd-list .thumb {
-	width: 200px; 
-	height:200px; 
 	position: relative;
 	width: 293px; 
 	height: 293px; 
@@ -462,15 +460,6 @@ nav .menu li {
     text-align: center;
 }
 
-.prd-list .thumb {
-    width: 110px;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 0;
-    line-height: 0;
-    border: 1px solid #dedede;
-}
-
 .prd-list .dsc {
     margin-top: 5px;
     padding: 0 10px;
@@ -502,4 +491,33 @@ nav .menu li {
 
 .product-list table {
 	text-align: center;
+}
+
+.admin-header .gnb {
+	right: 150px;
+    top: 10px;
+    position: absolute;
+}
+
+.admin-header a {
+	font-size: 25px;
+}
+
+.admin a {
+	font-size: 40px;
+}
+
+#myPageWrap .section-header {
+	border-bottom: 3px solid #000000;
+    padding-bottom: 14px;
+    margin-top: 48px;
+    font-family: "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+    line-height: 1.5;
+    font-size: 14px;
+    position: relative;
+}
+
+#myPageWrap .tit {
+    display: inline-block;
+    font-size: 24px;
 }
