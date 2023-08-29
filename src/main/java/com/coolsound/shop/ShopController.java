@@ -21,6 +21,8 @@ public class ShopController {
 	
 	@GetMapping("/main_view")
 	public String mainView(Model model) {
+		List<Product> productList = productBO.getProductListByCategoryId(null);
+		model.addAttribute("productList", productList);
 		model.addAttribute("view", "shop/main");
 		return "template/layout";
 	}

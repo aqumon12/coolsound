@@ -155,7 +155,16 @@ nav .menu li {
 	margin: 0 5px; 
 	list-style: none;
 }
-        
+.new-prd-list .thumb{
+	width: 110px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 0;
+    line-height: 0;
+    border: 1px solid #dedede;
+	
+}   
+    
 .prd-list .center {
 	padding: 0 10px;
 }

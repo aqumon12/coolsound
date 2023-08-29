@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +17,7 @@
 </head>
 <body>
 	<div>
-		<form id="updateProductForm" method="post" action="/admin/add_product">
+		<form id="updateProductForm" method="post" action="/admin/update_product">
 			<div class="product-info">
 				<table class="product-tb">
 					<colgroup>
@@ -26,76 +26,76 @@
 					</colgroup>
 					<tbody>
 						<tr>
-							<th class="col1">*¾Ù¹ü¸í</th>
+							<th class="col1">*ì•¨ë²”ëª…</th>
 							<td class="col2">
 								<input type="text" id="name" name="name" value="${product.name}">
 							</td>
 						</tr>
 						<tr>
-							<th class="col1">*Ä«Å×°í¸®</th>
+							<th class="col1">*ì¹´í…Œê³ ë¦¬</th>
 							<td class="col2">
 								<select id="selectCategory" name="selectCategory" data-category-id="${product.categoryId}">
-									<option value="1">¹ß¶óµå</option>
-									<option value="2">´í½º</option>
-									<option value="3">·¦/ÈüÇÕ</option>
+									<option value="1">ë°œë¼ë“œ</option>
+									<option value="2">ëŒ„ìŠ¤</option>
+									<option value="3">ë©/í™í•©</option>
 									<option value="4">R&B/Soul</option>
-									<option value="5">ÀÎµğÀ½¾Ç</option>
-									<option value="6">Æ®·ÎÆ®</option>
+									<option value="5">ì¸ë””ìŒì•…</option>
+									<option value="6">íŠ¸ë¡œíŠ¸</option>
 								</select>
 							</td>
 						</tr>
 						<tr>
-							<th class="col1">*°¡¼ö¸í</th>
+							<th class="col1">*ê°€ìˆ˜ëª…</th>
 							<td class="col2">
 								<input type="text" id="artist" name="artist" value="${product.artist}">
 							</td>
 						</tr>
 						<tr>
-							<th class="col1">*Á¦ÀÛ»ç</th>
+							<th class="col1">*ì œì‘ì‚¬</th>
 							<td class="col2">
 								<input type="text" id="producer" name="producer" value="${product.producer}">
 							</td>
 						</tr>
 						<tr>
-							<th class="col1">*°¡°İ</th>
+							<th class="col1">*ê°€ê²©</th>
 							<td class="col2">
 								<input type="number" id="price" name="price" value="${product.price}"> 
 							</td>
 						</tr>
 						<tr>
-							<th class="col1">*Àç°í</th>
+							<th class="col1">*ì¬ê³ </th>
 							<td class="col2">
 								<input type="number" name="stock" id="stock" maxlength="4" value="${product.stock}">	
 							</td>
 						</tr>
 						<tr>
-							<th class="col1">*¹ß¸ÅÀÏ</th>
+							<th class="col1">*ë°œë§¤ì¼</th>
 							<td class="col2">
 								
 								<input type="text" name="releaseDate" id="releaseDate" value="${product.releaseDate}">
 							</td>
 						</tr>
 						<tr>
-							<th class="col1">*»ó¼¼Á¤º¸</th>
+							<th class="col1">*ìƒì„¸ì •ë³´</th>
 							<td class="col2">
 								<textarea rows="10" cols="80" name="detail" id="detail">${product.detail}</textarea>
 							</td>
 						</tr>
 						<tr>
-							<th class="col1">*ÀÌ¹ÌÁö1(½æ³×ÀÏ)</th>
+							<th class="col1">*ì´ë¯¸ì§€1(ì¸ë„¤ì¼)</th>
 							<td class="col2">
 								<label for="image1">
-									<a class="btn btn-light">ÆÄÀÏ¼±ÅÃ</a>
+									<a class="btn btn-light">íŒŒì¼ì„ íƒ</a>
 									<span id="imageName1">${product.image1}</span>
 								</label>
 								<input type="file" name="image1" id="image1" class="d-none" accept=".jpg, .jpeg, .png, .gif">
 							</td>
 						</tr>
 						<tr>
-							<th class="col1">*ÀÌ¹ÌÁö2</th>
+							<th class="col1">*ì´ë¯¸ì§€2</th>
 							<td class="col2">
 								<label for="image2">
-									<a class="btn btn-light">ÆÄÀÏ¼±ÅÃ</a>
+									<a class="btn btn-light">íŒŒì¼ì„ íƒ</a>
 									<span id="imageName2">${product.image2}</span>
 								</label>
 								<input type="file" name="image2" id="image2" class="d-none" accept=".jpg, .jpeg, .png, .gif">
@@ -103,7 +103,7 @@
 						</tr>
 					</tbody>
 				</table>
-				<input type="submit" id="addProductBtn" class="btn btn-secondary" value="»óÇ°¼öÁ¤">
+				<input type="submit" id="addProductBtn" class="btn btn-secondary" value="ìƒí’ˆìˆ˜ì •">
 			</div>
 		</form>
 	</div>
@@ -127,6 +127,11 @@ $(document).ready(function() {
 	    $('#imageName2').html(imageName);
 	});
 	
-	$()
+	$('#updateProductForm').on('submit', function() {
+		let url=$(this).attr('action');
+		let params = $(this).serialize();
+		$.post(url, params)
+		.done
+	});
 });
 </script>

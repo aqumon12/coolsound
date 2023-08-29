@@ -75,5 +75,26 @@ public class AdminRestController {
 		result.put("result", "성공");
 		return result;
 	}
+	
+	@PostMapping("update_product")
+	public Map<String, Object> updateProduct(
+			@RequestParam("name") String name,
+			@RequestParam("selectCategory") int categoryId,
+			@RequestParam("artist") String artist,
+			@RequestParam("producer") String producer,
+			@RequestParam("price") int price,
+			@RequestParam("stock") int stock,
+			@RequestParam("releaseDate") @DateTimeFormat(pattern="yy-mm-dd") Date releaseDate,
+			@RequestParam("detail") String detail,
+			@RequestParam("image1") MultipartFile image1,
+			@RequestParam(value = "image2", required = false) MultipartFile image2,
+			HttpSession session) {
+		String adminLoginId = (String)session.getAttribute("adminLoginId");
+		productBO.addProduct(adminLoginId, name, categoryId, artist, producer, price, stock, releaseDate, detail, image1, image2);
+		Map<String, Object> result = new HashMap<>();
+		result.put("code", 1);
+		result.put("result", "성공");
+		return result;
+	}
 
 }

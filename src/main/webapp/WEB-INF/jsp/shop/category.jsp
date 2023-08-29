@@ -2,8 +2,6 @@
 	pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="page-body">
-
-	<h2 class="now-cate-name">${categoryId}</h2>
 	<div class="sort"></div>
 	<div class="prd-list col-9">
 			<div class="center d-flex flex-wrap">

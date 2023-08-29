@@ -40,4 +40,8 @@ public class ProductBO {
 	public List<Product> getProductListByNameOrArtist(String search) {
 		return productMapper.selectProductListByNameOrArtist(search);
 	}
+	
+	public void updateProduct() {
+		
+	}
 }

@@ -48,7 +48,7 @@ $(document).ready(function() {
 		$.post(url, params)
 		.done(function(data) {
 			if (data.code = 1) {
-				location.href = "/admin/main_view";
+				window.location.assign("/admin/main_view");
 			} else {
 				alert(data.errorMessage);
 				location.reload(true);
