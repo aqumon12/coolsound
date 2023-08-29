@@ -42,6 +42,7 @@ public class UserRestController {
 		Map<String, Object> result = new HashMap<>();
 		if (userEntity != null) {
 			session.setAttribute("userId", userEntity.getId());
+			session.setAttribute("userLoginId", userEntity.getLoginId());
 			session.setAttribute("userName", userEntity.getName());
 			
 			result.put("code", 1);

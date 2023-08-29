@@ -530,3 +530,66 @@ nav .menu li {
     display: inline-block;
     font-size: 24px;
 }
+
+#order h2 {
+    margin-top: 40px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #333;
+    color: #333;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+#order h3 {
+    position: relative;
+    margin-top: 40px;
+    color: #000;
+    font-family: 'malgun gothic';
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#order .tbl-order {
+    position: relative;
+    margin-top: 10px;
+    border-top: 2px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    font-size: 13px;
+}
+
+#order .tbl-order thead th {
+    background:#c8c8c8;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+
+#order .tbl-order td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #eee;
+    color: #222;
+}
+
+#order input[type=text] {
+    width: 168px;
+    height: 23px;
+    line-height: 23px;
+    padding: 0 5px;
+    border: 1px solid #ddd;
+}
+
+#order .btn-white {
+    display: inline-block;
+    height: 23px;
+    line-height: 25px;
+    padding: 0 5px;
+    border: 1px solid #ddd;
+    color: #000;
+    font-weight: bold;
+    letter-spacing: -1px;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+#order .w60 {
+    width: 48px !important;
+}

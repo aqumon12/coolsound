@@ -2,6 +2,8 @@ package com.coolsound.shop;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.coolsound.shop.bo.ProductBO;
 import com.coolsound.shop.domain.Product;
+import com.coolsound.user.bo.UserBO;
+import com.coolsound.user.domain.CartView;
+import com.coolsound.user.entity.UserEntity;
 
 @Controller
 @RequestMapping("/shop")
@@ -18,6 +23,9 @@ public class ShopController {
 	
 	@Autowired
 	private ProductBO productBO;
+	
+	@Autowired
+	private UserBO userBO;
 	
 	@GetMapping("/main_view")
 	public String mainView(Model model) {
@@ -54,6 +62,18 @@ public class ShopController {
 		List<Product> productList = productBO.getProductListByNameOrArtist(search);
 		model.addAttribute("productList", productList);
 		model.addAttribute("view", "shop/search");
+		return "template/layout";
+	}
+	
+	@GetMapping("/order_view")
+	public String orderView(HttpSession session, Model model) {
+		int userId = (int)session.getAttribute("userId");
+		String userLoginId = (String)session.getAttribute("userLoginId");
+		List<CartView> list = userBO.generateCartViewList(userId);
+		UserEntity userEntity = userBO.getUserEntityByLoginId(userLoginId);
+		model.addAttribute("userEntity", userEntity);
+		model.addAttribute("list", list);
+		model.addAttribute("view", "shop/order");
 		return "template/layout";
 	}
 }

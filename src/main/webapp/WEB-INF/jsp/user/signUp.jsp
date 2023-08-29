@@ -44,7 +44,7 @@
 					<tr>
 						<th class="col1">*우편번호</th>
 						<td class="col2">
-							<input type="text" name="post" id="post" size="7" maxlength="15" readonly>	
+							<input type="text" name="post" id="post" size="6" readonly>	
 							<a id="postBtn" class="btn btn-check" href="#">우편번호 검색</a>				
 						</td>
 					</tr>
