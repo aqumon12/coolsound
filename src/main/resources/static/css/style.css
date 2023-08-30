@@ -570,7 +570,7 @@ nav .menu li {
 }
 
 #order input[type=text] {
-    width: 168px;
+    width: 200px;
     height: 23px;
     line-height: 23px;
     padding: 0 5px;
@@ -588,8 +588,66 @@ nav .menu li {
     letter-spacing: -1px;
     border-radius: 3px;
     font-size: 12px;
+    display: none;
 }
 
 #order .w60 {
     width: 48px !important;
+}
+
+#order .tbl-order textarea {
+    width: 500px;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+#order .tbl-pay {
+    margin-top: 10px;
+    border-top: 2px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+#order .tbl-pay thead th {
+    padding: 15px;
+    background: #ececec;
+    border-bottom: 1px solid #ccc;
+    font-size: 14px;
+    text-align: center;
+}
+
+#order .tbl-pay thead td {
+    padding: 25px 0 28px;
+    font-size: 16px;
+    text-align: center;
+}
+
+#order .tbl-pay th, #order .tbl-pay td {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    color: #444;
+    background: #f7f7f7;
+}
+
+#order .tbl-pay thead td .base .plus, #order .tbl-pay thead td .base .equal {
+    top: 9px;
+    width: 23px;
+    height: 23px;
+    right: 90%;
+    position: absolute;
+}
+
+#order .tbl-pay thead td .base {
+    position: relative;
+}
+
+#order #paybutton {
+    margin-top: 40px;
+    padding-left: 30px;
+    text-align: center;
+    font-size: 0;
+    line-height: 0;
+}
+
+#order #paybutton img {
+    margin: 0 5px;
 }
