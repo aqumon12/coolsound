@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.coolsound.common.EncryptUtils;
+import com.coolsound.order.bo.OrderBO;
+import com.coolsound.order.domain.Order;
 import com.coolsound.user.bo.UserBO;
 import com.coolsound.user.entity.UserEntity;
 
@@ -21,6 +23,9 @@ public class UserRestController {
 	
 	@Autowired
 	private UserBO userBO;
+	
+	@Autowired
+	private OrderBO orderBO;
 	
 	/**
 	 * 로그인API
@@ -107,6 +112,26 @@ public class UserRestController {
 			result.put("code", 500);
 			result.put("errorMessage", "회원가입에 실패했습니다.");
 		}
+		
+		return result;
+	}
+	
+	@PostMapping("/add_order")
+	public Map<String, Object> addOrder(
+			@RequestParam("post") int post,
+			@RequestParam("address1") String address1,
+			@RequestParam("address2") String address2,
+			@RequestParam(value = "request", required = false) String request,
+			@RequestParam("price") int price,
+			HttpSession session) {
+		int userId  = (int)session.getAttribute("userId");
+		orderBO.addOrder(userId, post, address1, address2, request, price);
+		
+		Map<String, Object> result = new HashMap<>();
+	
+		result.put("code", 1);
+		result.put("result", "성공");
+		
 		
 		return result;
 	}

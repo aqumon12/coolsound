@@ -76,4 +76,10 @@ public class ShopController {
 		model.addAttribute("view", "shop/order");
 		return "template/layout";
 	}
+	
+	@GetMapping("/order_complete_view")
+	public String reviewView(Model model) {
+		model.addAttribute("view", "shop/orderComplete");
+		return "template/layout";
+	}
 }
