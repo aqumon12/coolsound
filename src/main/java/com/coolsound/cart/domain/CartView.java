@@ -1,6 +1,5 @@
-package com.coolsound.user.domain;
+package com.coolsound.cart.domain;
 
-import com.coolsound.cart.domain.Cart;
 import com.coolsound.shop.domain.Product;
 
 import lombok.Data;

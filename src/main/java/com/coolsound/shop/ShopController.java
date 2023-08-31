@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.coolsound.cart.domain.CartView;
 import com.coolsound.shop.bo.ProductBO;
 import com.coolsound.shop.domain.Product;
 import com.coolsound.user.bo.UserBO;
-import com.coolsound.user.domain.CartView;
 import com.coolsound.user.entity.UserEntity;
 
 @Controller

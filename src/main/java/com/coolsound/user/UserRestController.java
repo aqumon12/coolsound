@@ -5,8 +5,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.coolsound.common.EncryptUtils;
-import com.coolsound.order.bo.OrderBO;
 import com.coolsound.user.bo.UserBO;
 import com.coolsound.user.entity.UserEntity;
 
@@ -22,14 +19,10 @@ import com.coolsound.user.entity.UserEntity;
 @RequestMapping("/user")
 public class UserRestController {
 	
-	
-	private Logger logger = LoggerFactory.getLogger(this.getClass());
-	
 	@Autowired
 	private UserBO userBO;
 	
-	@Autowired
-	private OrderBO orderBO;
+
 	
 	/**
 	 * 로그인API
@@ -120,25 +113,5 @@ public class UserRestController {
 		return result;
 	}
 	
-	@PostMapping("/add_order")
-	public Map<String, Object> addOrder(
-			@RequestParam("productId") int[] productId,
-			@RequestParam("count") int count,
-			@RequestParam("orderPrice") int orderPrice,
-			@RequestParam("post") int post,
-			@RequestParam("address1") String address1,
-			@RequestParam("address2") String address2,
-			@RequestParam(value = "request", required = false) String request,
-			@RequestParam("price") int price,
-			HttpSession session) {
-		int userId  = (int)session.getAttribute("userId");
-		orderBO.addOrder(userId, productId, count, orderPrice, post, address1, address2, request, price);
-		Map<String, Object> result = new HashMap<>();
-		
-		result.put("code", 1);
-		result.put("result", "성공");
-		
-		
-		return result;
-	}
+	
 }

@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.coolsound.aop.TimeTrace;
+import com.coolsound.cart.domain.CartView;
 import com.coolsound.user.bo.UserBO;
-import com.coolsound.user.domain.CartView;
 
 @Controller
 @RequestMapping("/user")

@@ -30,4 +30,25 @@
 			, NOW() 		
  		)
  	</insert>
+ 	
+ 	<insert id="insertOrderProduct" parameterType="map">
+ 		INSERT INTO `orderproduct`
+ 		(
+			`orderId`
+			, `productId`
+			, `count`
+			, `price`
+ 		)
+ 		VALUES
+ 		(
+ 			#{orderId}
+ 		<foreach collection="prdList" item="item">
+ 			, #{item.product.id}
+ 			, #{item.cart.count}
+ 			, #{item.product.price} * #{item.cart.count}
+ 		</foreach>
+ 			
+ 		)
+ 	
+ 	</insert>
  </mapper>

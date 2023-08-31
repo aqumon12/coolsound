@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.coolsound.cart.bo.CartBO;
 import com.coolsound.cart.domain.Cart;
+import com.coolsound.cart.domain.CartView;
 import com.coolsound.shop.bo.ProductBO;
 import com.coolsound.user.dao.UserRepository;
-import com.coolsound.user.domain.CartView;
 import com.coolsound.user.entity.UserEntity;
 
 @Service
