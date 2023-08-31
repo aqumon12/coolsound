@@ -27,6 +27,10 @@
 					<c:set var = "total" value = "0" />
 					<c:forEach items="${list}" var="prd">
 					<c:set var = "total" value = "${total + prd.cart.count * prd.product.price}" />
+						<input type="hidden" name="productId" value="${prd.product.id}">
+						<input type="hidden" name="count" value="${prd.cart.count}">
+						<input type="hidden" name="orderPrice" value="${prd.cart.count * prd.product.price}">
+						
 						<tr class="nbg">
 							<td>
 								<div class="tb-center">
