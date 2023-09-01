@@ -23,9 +23,9 @@
 			</tr>
 		</thead>
 		<tbody>
-		<c:forEach items="${productList}" var="product" varStatus="status">
+		<c:forEach items="${OrderViewList}" var="orderView" varStatus="status">
 			<tr>
-				<td><a>${status.count}</a></td>
+				<td><a>${orderView.user.name}</a></td>
 				<td><a>${product.artist} - ${product.name}</a></td>
 				<td><a>${product.price}</a></td>
 				<td><a>${product.stock}</a></td>

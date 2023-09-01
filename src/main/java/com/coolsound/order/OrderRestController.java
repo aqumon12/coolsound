@@ -1,7 +1,6 @@
 package com.coolsound.order;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.coolsound.cart.domain.CartView;
 import com.coolsound.order.bo.OrderBO;
 
 @RestController
@@ -24,7 +22,9 @@ public class OrderRestController {
 	
 	@PostMapping("/add_order")
 	public Map<String, Object> addOrder(
-			@RequestParam("prd") List<CartView> prdList,
+			@RequestParam("productId") int[] productId,
+			@RequestParam("count") int[] count,
+			@RequestParam("orderPrice") int[] orderPrice,
 			@RequestParam("post") int post,
 			@RequestParam("address1") String address1,
 			@RequestParam("address2") String address2,
@@ -32,7 +32,7 @@ public class OrderRestController {
 			@RequestParam("price") int price,
 			HttpSession session) {
 		int userId  = (int)session.getAttribute("userId");
-		orderBO.addOrder(userId, prdList, post, address1, address2, request, price);
+		orderBO.addOrder(userId, productId, count, orderPrice, post, address1, address2, request, price);
 		Map<String, Object> result = new HashMap<>();
 		
 		result.put("code", 1);

@@ -6,7 +6,6 @@
 	<h2>주문/결제</h2>
 	<div class="page-body">
 		<form id="orderForm" method="post" action="/order/add_order">
-						<input type="hidden" name="prd" value="${list}">
 			<h3>주문리스트</h3>
 			<div class="tbl-order">
 				<table>
@@ -25,12 +24,12 @@
 						</tr>
 					</thead>
 					<tbody>
-					<c:set var = "total" value = "0" />
+					<c:set var="total" value="0" />
 					<c:forEach items="${list}" var="prd">
-					<c:set var = "total" value = "${total + prd.cart.count * prd.product.price}" />
-						<%-- <input type="hidden" name="productId" value="${prd.product.id}">
+					<c:set var="total" value="${total + prd.cart.count * prd.product.price}" />
+						<input type="hidden" name="productId" value="${prd.product.id}">
 						<input type="hidden" name="count" value="${prd.cart.count}">
-						<input type="hidden" name="orderPrice" value="${prd.cart.count * prd.product.price}"> --%>
+						<input type="hidden" name="orderPrice" value="${prd.cart.count * prd.product.price}">
 						
 						<tr class="nbg">
 							<td>

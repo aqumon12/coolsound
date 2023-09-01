@@ -42,13 +42,26 @@
  		VALUES
  		(
  			#{orderId}
- 		<foreach collection="prdList" item="item">
- 			, #{item.product.id}
- 			, #{item.cart.count}
- 			, #{item.product.price} * #{item.cart.count}
- 		</foreach>
- 			
+ 			, #{productId}
+ 			, #{count}
+ 			, #{orderPrice}
  		)
  	
  	</insert>
+ 	
+ 	<select id="selectOrderList" resultType="com.coolsound.order.domain.Order">
+ 		SELECT
+			`userId`
+			, `post`
+			, `address1`
+			, `address2`
+			, `request`
+			, `price`
+			, `deliveryFee`
+			, `state`
+			, `createdAt`
+			, `updatedAt`
+ 		FROM
+ 			`order`
+ 	</select>
  </mapper>
