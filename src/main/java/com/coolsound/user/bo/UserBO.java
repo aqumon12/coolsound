@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 import com.coolsound.cart.bo.CartBO;
 import com.coolsound.cart.domain.Cart;
 import com.coolsound.cart.domain.CartView;
+import com.coolsound.order.bo.OrderBO;
+import com.coolsound.order.domain.Order;
+import com.coolsound.order.domain.OrderView;
 import com.coolsound.shop.bo.ProductBO;
 import com.coolsound.user.dao.UserRepository;
 import com.coolsound.user.entity.UserEntity;
@@ -24,6 +27,9 @@ public class UserBO {
 	
 	@Autowired
 	private ProductBO productBO;
+	
+	@Autowired
+	private OrderBO orderBO;
 	
 	public UserEntity getUserEntityByLoginIdPassword(String loginId, String password) {
 		return userRepository.findByLoginIdAndPassword(loginId, password);
@@ -61,5 +67,20 @@ public class UserBO {
 			cartViewList.add(cartView);
 		}
 		return cartViewList;
+	}
+	
+	public List<OrderView> generateOrderViewList() {
+		List<OrderView> orderViewList = new ArrayList<>();
+		
+		List<Order> orderList = orderBO.getOrderList();
+		for (Order order : orderList) {
+			OrderView orderView = new OrderView();
+			 order.getId();
+			orderView.setOrder(order);
+			userRepository.findById(order.getUserId());
+			orderView.setUserEntity(userRepository.findById(order.getUserId()).orElse(null));
+			orderViewList.add(orderView);
+		}
+		return orderViewList;
 	}
 }

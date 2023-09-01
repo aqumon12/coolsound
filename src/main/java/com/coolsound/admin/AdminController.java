@@ -2,7 +2,6 @@ package com.coolsound.admin;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +11,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.coolsound.order.bo.OrderBO;
+import com.coolsound.order.domain.OrderView;
 import com.coolsound.shop.bo.ProductBO;
 import com.coolsound.shop.domain.Product;
+import com.coolsound.user.bo.UserBO;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
+	@Autowired 
+	private UserBO userBO;
+	
+	@Autowired 
+	private OrderBO orderBO;
 	
 	@Autowired
 	private ProductBO productBO;
@@ -60,6 +67,8 @@ public class AdminController {
 	
 	@GetMapping("/order_list_view")
 	public String adOrderListView(Model model) {
+		List<OrderView> OrderViewList = userBO.generateOrderViewList();
+		model.addAttribute("OrderViewList", OrderViewList);
 		model.addAttribute("view", "admin/orderList");
 		return "template/adminLayout";
 	}
