@@ -98,4 +98,23 @@
  		WHERE name like CONCAT('%',#{search},'%') OR artist like  CONCAT('%',#{search},'%')
  		ORDER BY `createdAt` DESC
  	</select>
+ 	
+ 	<update id="updateProduct" parameterType="map">
+ 		UPDATE
+ 			`product`
+ 		SET
+ 			`name` = #{name}
+			, `categoryId` = #{categoryId}
+			, `artist` = #{artist}
+			, `producer` = #{producer}
+			, `price` = #{price}
+			, `image1` = #{image1}
+			, `image2` = #{image2}
+			, `detail` = #{detail}
+			, `releaseDate` = #{releaseDate}
+			, `stock` = #{stock}
+			, `updatedAt` = NOW()
+ 		WHERE
+ 			`id` = #{Id}
+ 	</update>
  </mapper>

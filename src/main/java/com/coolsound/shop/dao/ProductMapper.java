@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.coolsound.shop.domain.Product;
 
@@ -28,4 +27,17 @@ public interface ProductMapper {
 			@Param("image2") String image2);
 	
 	public List<Product> selectProductListByNameOrArtist(String search);
+	
+	public void updateProduct(
+			@Param("id") int id,
+			@Param("name") String name,
+			@Param("categoryId") int categoryId,
+			@Param("artist") String artist,
+			@Param("producer") String producer,
+			@Param("price") int price,
+			@Param("stock") int stock,
+			@Param("releaseDate") Date releaseDate,
+			@Param("detail") String detail,
+			@Param("image1") String image1,
+			@Param("image2") String image2);
 }
