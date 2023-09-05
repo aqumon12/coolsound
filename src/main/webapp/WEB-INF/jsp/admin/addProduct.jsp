@@ -166,7 +166,7 @@ $(document).ready(function() {
 			, success: function(data) {
 				if (data.code == 1) {
 					alert('상품이 등록되었습니다.');
-					location.href = "/admin/product_list_view";
+					location.href = "/admin/a/product_list_view";
 				} else {
 					alert(releaseDate);
 				}
