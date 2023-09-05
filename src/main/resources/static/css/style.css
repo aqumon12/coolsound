@@ -651,3 +651,20 @@ nav .menu li {
 #order #paybutton img {
     margin: 0 5px;
 }
+
+#cartWrap .buy {
+	display: inline-block;
+    width: 220px;
+    height: 70px;
+    line-height: 70px;
+    border: 2px #333 solid;
+    font-weight: bold;
+}
+
+#cartWrap .btn-area {
+	text-align: center;
+    font-size: 11px;
+    letter-spacing: 1px;
+    margin-top: 20px;
+	
+}

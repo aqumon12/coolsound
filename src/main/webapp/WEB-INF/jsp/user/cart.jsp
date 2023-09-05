@@ -102,7 +102,9 @@
 			class="MK_chg_delivery_message">2,500</span>원을 청구합니다.
 		</span>
 	</div>
-
+	<div class="btn-area">
+		<a href="/shop/order_view" class="buy">주문하기</a>
+	</div>
 </div>
 <script>
 $(document).ready(function() {
