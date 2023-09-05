@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -72,7 +73,8 @@
 							<th class="col1">*발매일</th>
 							<td class="col2">
 								
-								<input type="text" name="releaseDate" id="releaseDate" value="${product.releaseDate}">
+								<fmt:formatDate value="${product.releaseDate}" pattern="yy-MM-dd" var="parsedReleaseDate"/>
+								<input type="text" name="releaseDate" id="releaseDate" value="${parsedReleaseDate}">
 							</td>
 						</tr>
 						<tr>
@@ -88,7 +90,7 @@
 									<a class="btn btn-light">파일선택</a>
 									<span id="imageName1">${product.image1}</span>
 								</label>
-								<input type="file" id="image1" class="d-none" accept=".jpg, .jpeg, .png, .gif">
+								<input type="file" name="image1" id="image1" class="d-none" accept=".jpg, .jpeg, .png, .gif">
 							</td>
 						</tr>
 						<tr>
@@ -98,7 +100,7 @@
 									<a class="btn btn-light">파일선택</a>
 									<span id="imageName2">${product.image2}</span>
 								</label>
-								<input type="file" id="image2" class="d-none" accept=".jpg, .jpeg, .png, .gif">
+								<input type="file" id="image2" class="d-none" accept=".jpg, .jpeg, .png, .gif" >
 							</td>
 						</tr>
 					</tbody>
