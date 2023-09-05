@@ -45,12 +45,16 @@ public class OrderBO {
 		return orderMapper.selectOrderList();
 	}
 	
-	public List<Product> aaaa() {
-		List<Product> productList = new ArrayList();
-		List<OrderProduct> opList = orderMapper.selectOrderProductListByOrderId(0);
+	public List<Product> getProductListById(int id) {
+		List<Product> productList = new ArrayList<>();
+		List<OrderProduct> opList = orderMapper.selectOrderProductListByOrderId(id);
 		for (OrderProduct op : opList) {
 			productList.add(productBO.getProductById(op.getProductId()));
 		}
 		return productList;
+	}
+	
+	public void updateOrder(String state, int orderId) {
+		orderMapper.updateOrder(state, orderId);
 	}
 }

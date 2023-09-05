@@ -51,7 +51,8 @@
  	
  	<select id="selectOrderList" resultType="com.coolsound.order.domain.Order">
  		SELECT
-			`userId`
+ 			`id`
+			, `userId`
 			, `post`
 			, `address1`
 			, `address2`
@@ -64,4 +65,27 @@
  		FROM
  			`order`
  	</select>
+ 	
+ 	<select id="selectOrderProductListByOrderId" resultType="com.coolsound.order.domain.OrderProduct">
+ 		SELECT
+			`orderId`
+			, `productId`
+			, `count`
+			, `price`
+ 		FROM
+ 			`orderproduct`
+ 		<if test="#{orderId != 0}">
+ 		WHERE 
+ 			`orderId` = #{orderId}
+ 		</if>
+ 	</select>
+ 	
+ 	<update id="updateOrder" parameterType="map">
+ 		UPDATE
+ 			`order`
+ 		SET
+ 			`state` = #{state}
+ 		WHERE
+ 			`id` = #{orderId}
+ 	</update>
  </mapper>

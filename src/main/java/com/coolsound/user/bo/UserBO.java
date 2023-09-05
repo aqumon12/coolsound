@@ -75,7 +75,8 @@ public class UserBO {
 		List<Order> orderList = orderBO.getOrderList();
 		for (Order order : orderList) {
 			OrderView orderView = new OrderView();
-			 order.getId();
+			
+			orderView.setProductList(orderBO.getProductListById(order.getId()));
 			orderView.setOrder(order);
 			userRepository.findById(order.getUserId());
 			orderView.setUserEntity(userRepository.findById(order.getUserId()).orElse(null));

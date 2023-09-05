@@ -41,4 +41,18 @@ public class OrderRestController {
 		
 		return result;
 	}
+	
+	@PostMapping("/update_order")
+	public Map<String, Object> updateOrder(
+			@RequestParam("state") String state,
+			@RequestParam("orderId") int orderId) {
+		
+		orderBO.updateOrder(state, orderId);
+		Map<String, Object> result = new HashMap<>();
+		
+		result.put("code", 1);
+		result.put("result", "성공");
+		
+		return result;
+	}
 }
