@@ -51,7 +51,7 @@
 $(document).ready(function() {
 	$(".updateBtn").on('click', function() {
 		let productId = $(this).data('product-id');
-		window.open("/admin/update_product_view?id="+ productId, "상품 수정", "width=1000");
+		window.open("/admin/a/update_product_view?id="+ productId, "상품 수정", "width=1000");
 	});
 });
 </script>

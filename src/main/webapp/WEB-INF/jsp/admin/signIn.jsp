@@ -27,7 +27,8 @@
 
 <script>
 $(document).ready(function() {
-	$('#adLoginForm').on('submit', function() {
+	$('#adLoginForm').on('submit', function(e) {
+		e.preventDefault();
 		let loginId = $('#loginId').val().trim();
 		let password = $('#password').val();
 		
@@ -47,8 +48,8 @@ $(document).ready(function() {
 		
 		$.post(url, params)
 		.done(function(data) {
-			if (data.code = 1) {
-				window.location.assign("/admin/main_view");
+			if (data.result == "¼º°ø") {
+				window.location.assign("/admin/a/main_view");
 			} else {
 				alert(data.errorMessage);
 				location.reload(true);

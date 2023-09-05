@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <div id="productDetail">
 	<div class="page-body d-flex">
 		<div class="thumb-wrap">
 			<div class="thumb-info">
 				<div class="thumb">
-					<img src="${product.image1}" width="440" height="400" alt="»óÇ°ÀÌ¹ÌÁö">
+					<img src="${product.image1}" width="440" height="400" alt="ìƒí’ˆì´ë¯¸ì§€">
 				</div>
 			</div>
 		</div>
@@ -22,7 +22,7 @@
 					<tbody>
 						<tr>
 							<th>
-								<div class="tb-l">ÆÇ¸Å°¡</div>
+								<div class="tb-l">íŒë§¤ê°€</div>
 							</th>
 							<td>
 								<div class="tb-l" id="price" data-price="${product.price}">${product.price}</div>
@@ -30,7 +30,7 @@
 						</tr>
 						<tr>
 							<th>
-								<div class="tb-l">¾ÆÆ¼½ºÆ®</div>
+								<div class="tb-l">ì•„í‹°ìŠ¤íŠ¸</div>
 							</th>
 							<td>
 								<div class="tb-l">${product.artist}</div>
@@ -38,7 +38,7 @@
 						</tr>
 						<tr>
 							<th>
-								<div class="tb-l">Á¦ÀÛ»ç</div>
+								<div class="tb-l">ì œì‘ì‚¬</div>
 							</th>
 							<td>
 								<div class="tb-l">${product.producer}</div>
@@ -46,7 +46,7 @@
 						</tr>
 						<tr>
 							<th>
-								<div class="tb-l">¹ß¸ÅÀÏ</div>
+								<div class="tb-l">ë°œë§¤ì¼</div>
 							</th>
 							<td>
 								<div class="tb-l">
@@ -66,21 +66,21 @@
 													<div class="count-ctrl">
 														<input type="text" id="count" name="count" value="1" size="4" style="text-align: right; float: left;" readonly>
 														<a href="#" class="btn-up"> 
-															<img src="/static/images/basket_up.gif" alt="¼ö·®Áõ°¡" border="0">
+															<img src="/static/images/basket_up.gif" alt="ìˆ˜ëŸ‰ì¦ê°€" border="0">
 														</a> 
 														<a href="#" class="btn-dw"> 
-															<img src="/static/images/basket_down.gif" alt="¼ö·®°¨¼Ò" border="0">
+															<img src="/static/images/basket_down.gif" alt="ìˆ˜ëŸ‰ê°ì†Œ" border="0">
 														</a>
 													</div> 
 													<strong> 
-														<span class="total-price">${product.price}¿ø</span>
+														<span class="total-price">${product.price}ì›</span>
 													</strong>
 												</li>
 											</ul>
 										</div>
 										<div class="inner-price">
-											<span>ÃÑ »óÇ° ±İ¾×</span> 
-											<strong class="total-price">${product.price}¿ø</strong>
+											<span>ì´ ìƒí’ˆ ê¸ˆì•¡</span> 
+											<strong class="total-price">${product.price}ì›</strong>
 										</div>
 									</div>
 								</div>
@@ -92,37 +92,37 @@
 			</div>
 			<div class="prd-btns">
 				<div class="btn-area">
-					<a href="#" class="buy" data-product-id="${product.id}">»óÇ°±¸¸Å</a>
-					<a href="#" class="add-cart" data-product-id="${product.id}">Àå¹Ù±¸´Ï Ãß°¡</a>
+					<a href="#" class="buy" data-product-id="${product.id}">ìƒí’ˆêµ¬ë§¤</a>
+					<a href="#" class="add-cart" data-product-id="${product.id}">ì¥ë°”êµ¬ë‹ˆ ì¶”ê°€</a>
 				</div>
 			</div>
 		</div>
 	</div>
 		<div class="d-flex justify-content-center">
-			<img src="/static/images/product_detail.gif" alt="µğÅ×ÀÏ">
+			<img src="/static/images/product_detail.gif" alt="ë””í…Œì¼">
 		</div>
 		<div>
-			------ÀÌ¹ÌÁö-------
-			<!-- ÀÌ¹ÌÁöÃß°¡ -->
+			------ì´ë¯¸ì§€-------
+			<!-- ì´ë¯¸ì§€ì¶”ê°€ -->
 		</div>
 		<p>
-			------»ó¼¼¼³¸í------
-			<!-- »óÇ° »ó¼¼ ¼³¸í -->
+			------ìƒì„¸ì„¤ëª…------
+			<!-- ìƒí’ˆ ìƒì„¸ ì„¤ëª… -->
 		</p>
 		<div class="review-write">
-				---- ¸®ºä »Ñ¸®±â ----
+				---- ë¦¬ë·° ë¿Œë¦¬ê¸° ----
 		</div>
 </div>
 
 <script>
 function cart_confirm() {
-	var cartConfirm = confirm("ÀÌ¹Ì Àå¹Ù±¸´Ï¿¡ »óÇ°ÀÌ ´ã°ÜÀÖ½À´Ï´Ù.\n¼ö·® Á¶Á¤Àº Àå¹Ù±¸´Ï¿¡¼­ °¡´ÉÇÕ´Ï´Ù. Àå¹Ù±¸´Ï·Î ÀÌµ¿ÇÏ½Ã°Ú½À´Ï±î?");
+	var cartConfirm = confirm("ì´ë¯¸ ì¥ë°”êµ¬ë‹ˆì— ìƒí’ˆì´ ë‹´ê²¨ìˆìŠµë‹ˆë‹¤.\nìˆ˜ëŸ‰ ì¡°ì •ì€ ì¥ë°”êµ¬ë‹ˆì—ì„œ ê°€ëŠ¥í•©ë‹ˆë‹¤. ì¥ë°”êµ¬ë‹ˆë¡œ ì´ë™í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
 	if (cartConfirm) {
 		location.href = "/user/cart_view";
 	}		
 }
 $(document).ready(function() {
-	// ¼ö·® Áõ°¡
+	// ìˆ˜ëŸ‰ ì¦ê°€
 	$('.btn-up').on('click', function(e) {
 		e.preventDefault();
 		let count = $('#count').val();
@@ -131,15 +131,15 @@ $(document).ready(function() {
 		count++;
 		$('#count').val(count);
 		totalPrice = count * price;
-		$('.total-price').text(totalPrice + "¿ø");
+		$('.total-price').text(totalPrice + "ì›");
 	});
 
-	// ¼ö·® °¨¼Ò
+	// ìˆ˜ëŸ‰ ê°ì†Œ
 	$('.btn-dw').on('click', function(e) {
 		e.preventDefault();
 		let count = $('#count').val();
 		if (count <= 1) {
-			alert("ÃÖ¼Ò ±¸¸Å °¡´É ¼ö·®ÀÌ 1°³ÀÔ´Ï´Ù.");
+			alert("ìµœì†Œ êµ¬ë§¤ ê°€ëŠ¥ ìˆ˜ëŸ‰ì´ 1ê°œì…ë‹ˆë‹¤.");
 			return;
 		}
 
@@ -148,10 +148,10 @@ $(document).ready(function() {
 		count--;
 		$('#count').val(count);
 		totalPrice = count * price;
-		$('.total-price').text(totalPrice + "¿ø");
+		$('.total-price').text(totalPrice + "ì›");
 	});
 	
-	// Àå¹Ù±¸´Ï Ãß°¡
+	// ì¥ë°”êµ¬ë‹ˆ ì¶”ê°€
 	$('.add-cart').on('click', function(e) {
 		e.preventDefault();
 		let productId = $(this).data('product-id');
@@ -163,20 +163,20 @@ $(document).ready(function() {
 			, data:{"productId":productId, "count":count}
 			, success: function(data) {
 				if (data.code == 1) {
-					alert(count + "°³ÀÇ »óÇ°ÀÌ Àå¹Ù±¸´Ï¿¡ ´ã°å½À´Ï´Ù.");
+					alert(count + "ê°œì˜ ìƒí’ˆì´ ì¥ë°”êµ¬ë‹ˆì— ë‹´ê²¼ìŠµë‹ˆë‹¤.");
 					location.reload(true);
 				} else {
 					alert(data.errorMessage)
 				}
 			}
 			, error: function(reqeust, status, error) {
-				alert('ÀÌ¹Ì Àå¹Ù±¸´Ï¿¡ »óÇ°ÀÌ ´ã°ÜÀÖ½À´Ï´Ù.\n¼ö·® Á¶Á¤Àº Àå¹Ù±¸´Ï¿¡¼­ °¡´ÉÇÕ´Ï´Ù.');
+				alert('ì´ë¯¸ ì¥ë°”êµ¬ë‹ˆì— ìƒí’ˆì´ ë‹´ê²¨ìˆìŠµë‹ˆë‹¤.\nìˆ˜ëŸ‰ ì¡°ì •ì€ ì¥ë°”êµ¬ë‹ˆì—ì„œ ê°€ëŠ¥í•©ë‹ˆë‹¤.');
 				cart_confirm();
 			}
 		});
 	});
 	
-	// »óÇ° ±¸¸Å
+	// ìƒí’ˆ êµ¬ë§¤
 	$('.buy').on('click', function() {
 		let productId = $(this).data('product-id');
 		let count = $('#count').val();
@@ -187,14 +187,14 @@ $(document).ready(function() {
 			, data:{"productId":productId, "count":count}
 			, success: function(data) {
 				if (data.code == 1) {
-					alert("Àå¹Ù±¸´Ï¿¡ ´ã°ÜÀÖ´Â »óÇ°µµ ÇÔ²² ÁÖ¹®µË´Ï´Ù.\n¿øÄ¡ ¾ÊÀ¸½Ç °æ¿ì Àå¹Ù±¸´Ï¸¦ ºñ¿öÁÖ¼¼¿ä.");
+					alert("ì¥ë°”êµ¬ë‹ˆì— ë‹´ê²¨ìˆëŠ” ìƒí’ˆë„ í•¨ê»˜ ì£¼ë¬¸ë©ë‹ˆë‹¤.\nì›ì¹˜ ì•Šìœ¼ì‹¤ ê²½ìš° ì¥ë°”êµ¬ë‹ˆë¥¼ ë¹„ì›Œì£¼ì„¸ìš”.");
 					location.href = "/shop/order_view";
 				} else {
 					alert(data.errorMessage)
 				}
 			}
 			, error: function(reqeust, status, error) {
-				alert("Àå¹Ù±¸´Ï¿¡ ´ã°ÜÀÖ´Â »óÇ°µµ ÇÔ²² ÁÖ¹®µË´Ï´Ù.\n¿øÄ¡ ¾ÊÀ¸½Ç °æ¿ì Àå¹Ù±¸´Ï¸¦ ºñ¿öÁÖ¼¼¿ä.");
+				alert("ì¥ë°”êµ¬ë‹ˆì— ë‹´ê²¨ìˆëŠ” ìƒí’ˆë„ í•¨ê»˜ ì£¼ë¬¸ë©ë‹ˆë‹¤.\nì›ì¹˜ ì•Šìœ¼ì‹¤ ê²½ìš° ì¥ë°”êµ¬ë‹ˆë¥¼ ë¹„ì›Œì£¼ì„¸ìš”.");
 				cart_confirm();
 			}
 		});

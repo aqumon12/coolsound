@@ -116,7 +116,8 @@ $(document).ready(function() {
 	});
 	
 	// 회원가입 
-	$('#signUpForm').on('submit', function() {
+	$('#signUpForm').on('submit', function(e) {
+		e.preventDefault();
 		let name = $('#name').val().trim();
 		let loginId = $('#loginId').val().trim(); 
 		let password = $('#password').val(); 

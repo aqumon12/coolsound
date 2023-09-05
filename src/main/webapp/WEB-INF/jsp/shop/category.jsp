@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="page-body">
 	<div class="sort"></div>
@@ -9,7 +9,7 @@
 				<ul class="info">
 					<li>
 						<div class="thumb">
-							<a href="/shop/detail_view?id=${product.id}"> <img src="${product.image1}" width="320" height="293" alt="ΩÊ≥◊¿œ">
+							<a href="/shop/detail_view?id=${product.id}"> <img src="${product.image1}" width="320" height="293" alt="Ïç∏ÎÑ§Ïùº">
 							</a>
 						</div>
 					</li>
@@ -18,7 +18,7 @@
 							${product.artist} - ${product.name}
 						</a>
 					</li>
-					<li class="price"><strong>${product.price}ø¯</strong></li>
+					<li class="price"><strong>${product.price}Ïõê</strong></li>
 				</ul>
 			</c:forEach>
 			</div>

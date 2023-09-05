@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>	
 <div id="order">
@@ -143,14 +143,13 @@
 	                </thead>
 	        	</table>
 			</div>
-			<div id="paybutton">                                
-				<input type="image" src="/static/images/order_pay_ok.gif" alt="제출버튼">
-				
-                <a href="#">
-                	<img src="/static/images/order_pay_cancel.gif" alt="주문취소">
-                </a>
+			<div id="paybutton">       
+				<input type="image" id="payBtn" src="/static/images/order_pay_ok.gif" alt="제출버튼">
             </div>
 		</form>
+                <%-- <a href="#">
+                	<img src="/static/images/order_pay_cancel.gif" alt="주문취소">
+                </a> --%>
 	</div>
 </div>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -183,7 +182,8 @@ $(document).ready(function() {
 		
 	});
 	
-	$('#orderForm').on('submit', function() {
+	$('#orderForm').on('submit', function(e) {
+		e.preventDefault();
 		let post = $('#post').val();
 		let address1 = $('#address1').val();
 		let address2 = $('#address2').val().trim();
@@ -202,8 +202,7 @@ $(document).ready(function() {
 			 if (data.code == 1) {
 				 window.location.href = "/shop/order_complete_view";
 			 }
-			 
-		 })
+		 });
 		
 	});
 });

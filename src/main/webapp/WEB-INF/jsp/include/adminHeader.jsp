@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="wrap">
 	<div class="admin-header d-flex">
-		<h1 class="admin"><a href="/admin/main_view">Admin</a></h1>
+		<h1 class="admin"><a href="/admin/a/main_view">Admin</a></h1>
 			<c:if test="${adminId != null}">
 			<div class="gnb">
 				<span>${adminName}ดิ</span>

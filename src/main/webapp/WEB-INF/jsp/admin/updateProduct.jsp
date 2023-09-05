@@ -17,7 +17,7 @@
 </head>
 <body>
 	<div>
-		<form id="updateProductForm" method="post" action="/admin/update_product">
+		<form id="updateProductForm" method="post" action="/admin/a/update_product">
 			<div class="product-info">
 				<table class="product-tb">
 					<colgroup>
@@ -29,6 +29,7 @@
 							<th class="col1">*앨범명</th>
 							<td class="col2">
 								<input type="text" id="name" name="name" value="${product.name}">
+								<input type="hidden" id="id" name="id" value="${product.id}">
 							</td>
 						</tr>
 						<tr>
@@ -127,11 +128,14 @@ $(document).ready(function() {
 	    $('#imageName2').html(imageName);
 	});
 	
-	$('#updateProductForm').on('submit', function() {
+	$('#updateProductForm').on('submit', function(e) {
+		e.preventDefault();
 		let url=$(this).attr('action');
 		let params = $(this).serialize();
 		$.post(url, params)
-		.done
+		.done(function() {
+			alert("수정완료");
+		})
 	});
 });
 </script>
