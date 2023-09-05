@@ -55,7 +55,7 @@ public class AdminRestController {
 		return result;
 	}
 	
-	@PostMapping("add_product")
+	@PostMapping("/a/add_product")
 	public Map<String, Object> addProduct(
 			@RequestParam("name") String name,
 			@RequestParam(value = "categoryId", required=false) Integer categoryId,
@@ -76,8 +76,9 @@ public class AdminRestController {
 		return result;
 	}
 	
-	@PostMapping("update_product")
+	@PostMapping("/a/update_product")
 	public Map<String, Object> updateProduct(
+			@RequestParam("id") int id,
 			@RequestParam("name") String name,
 			@RequestParam("selectCategory") int categoryId,
 			@RequestParam("artist") String artist,
@@ -90,7 +91,7 @@ public class AdminRestController {
 			@RequestParam(value = "image2", required = false) MultipartFile image2,
 			HttpSession session) {
 		String adminLoginId = (String)session.getAttribute("adminLoginId");
-		productBO.addProduct(adminLoginId, name, categoryId, artist, producer, price, stock, releaseDate, detail, image1, image2);
+		productBO.updateProduct(id, adminLoginId, name, categoryId, artist, producer, price, stock, releaseDate, detail, image1, image2);
 		Map<String, Object> result = new HashMap<>();
 		result.put("code", 1);
 		result.put("result", "성공");

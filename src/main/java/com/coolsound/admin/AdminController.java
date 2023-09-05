@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.coolsound.order.bo.OrderBO;
 import com.coolsound.order.domain.OrderView;
 import com.coolsound.shop.bo.ProductBO;
 import com.coolsound.shop.domain.Product;
@@ -23,9 +22,7 @@ public class AdminController {
 	@Autowired 
 	private UserBO userBO;
 	
-	@Autowired 
-	private OrderBO orderBO;
-	
+		
 	@Autowired
 	private ProductBO productBO;
 	
@@ -45,13 +42,13 @@ public class AdminController {
 	    return "template/adminLayout";
 	}
 	
-	@GetMapping("/main_view")
+	@GetMapping("/a/main_view")
 	public String adMainView(Model model) {
 		model.addAttribute("view", "admin/main");
 		return "template/adminLayout";
 	}
 	
-	@GetMapping("/product_list_view")
+	@GetMapping("/a/product_list_view")
 	public String adProductListView(Model model) {
 		List<Product> productList = productBO.getProductListByCategoryId(null);
 		model.addAttribute("productList", productList);
@@ -59,13 +56,13 @@ public class AdminController {
 		return "template/adminLayout";
 	}
 	
-	@GetMapping("/add_product_view")
+	@GetMapping("/a/add_product_view")
 	public String adAddProductView(Model model) {
 		model.addAttribute("view", "admin/addProduct");
 		return "template/adminLayout";
 	}
 	
-	@GetMapping("/order_list_view")
+	@GetMapping("/a/order_list_view")
 	public String adOrderListView(Model model) {
 		List<OrderView> OrderViewList = userBO.generateOrderViewList();
 		model.addAttribute("OrderViewList", OrderViewList);
@@ -73,7 +70,7 @@ public class AdminController {
 		return "template/adminLayout";
 	}
 	
-	@GetMapping("/update_product_view")
+	@GetMapping("/a/update_product_view")
 	public String adUpdateProductView(
 			@RequestParam("id") int id,
 			Model model) {

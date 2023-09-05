@@ -45,19 +45,19 @@ public class UserController {
 	    return "redirect:"+ referer;
 	}
 	
-	@GetMapping("/myPage_view")
+	@GetMapping("/umyPage_view")
 	public String myPageView(Model model) {
 		model.addAttribute("view", "user/myPage");
 		return "template/layout";
 	}
 	
-	@GetMapping("/order_history_view")
+	@GetMapping("/uorder_history_view")
 	public String orderHistoryView(Model model) {
 		model.addAttribute("view", "user/orderHistory");
 		return "template/layout";
 	}
 	
-	@GetMapping("/cart_view")
+	@GetMapping("/ucart_view")
 	public String cartView(Model model, HttpSession session) {
 		int userId = (int)session.getAttribute("userId");
 		List<CartView> list = userBO.generateCartViewList(userId);
@@ -66,7 +66,7 @@ public class UserController {
 		return "template/layout";
 	}
 	
-	@GetMapping("/review_view")
+	@GetMapping("/ureview_view")
 	public String reviewView(Model model) {
 		model.addAttribute("view", "user/review");
 		return "template/layout";
