@@ -158,7 +158,7 @@ $(document).ready(function() {
 		
 		$.ajax({
 			type:"post"
-			, url:"/admin/add_product"
+			, url:"/admin/a/add_product"
 			, data:formData
 			, enctype:"multipart/form-data"
 			, processData:false
@@ -167,14 +167,12 @@ $(document).ready(function() {
 				if (data.code == 1) {
 					alert('상품이 등록되었습니다.');
 					location.href = "/admin/a/product_list_view";
-				} else {
-					alert(releaseDate);
 				}
 			}
 			, error:function(request, status, error) {
 				alert("상품등록에 실패했습니다.");
 			}
 		});
-	})
-})
+	});
+});
 </script>

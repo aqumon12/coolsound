@@ -80,7 +80,7 @@ public class AdminRestController {
 	public Map<String, Object> updateProduct(
 			@RequestParam("id") int id,
 			@RequestParam("name") String name,
-			@RequestParam("selectCategory") int categoryId,
+			@RequestParam("categoryId") int categoryId,
 			@RequestParam("artist") String artist,
 			@RequestParam("producer") String producer,
 			@RequestParam("price") int price,

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +18,6 @@
 </head>
 <body>
 	<div>
-		<form id="updateProductForm" method="post" action="/admin/a/update_product">
 			<div class="product-info">
 				<table class="product-tb">
 					<colgroup>
@@ -73,7 +73,8 @@
 							<th class="col1">*발매일</th>
 							<td class="col2">
 								
-								<input type="text" name="releaseDate" id="releaseDate" value="${product.releaseDate}">
+								<fmt:formatDate value="${product.releaseDate}" pattern="yy-MM-dd" var="parsedReleaseDate"/>
+								<input type="text" name="releaseDate" id="releaseDate" value="${parsedReleaseDate}">
 							</td>
 						</tr>
 						<tr>
@@ -99,14 +100,13 @@
 									<a class="btn btn-light">파일선택</a>
 									<span id="imageName2">${product.image2}</span>
 								</label>
-								<input type="file" name="image2" id="image2" class="d-none" accept=".jpg, .jpeg, .png, .gif">
+								<input type="file" id="image2" class="d-none" accept=".jpg, .jpeg, .png, .gif" >
 							</td>
 						</tr>
 					</tbody>
 				</table>
-				<input type="submit" id="addProductBtn" class="btn btn-secondary" value="상품수정">
+				<input type="submit" id="updateProductBtn" class="btn btn-secondary" value="상품수정">
 			</div>
-		</form>
 	</div>
 </body>
 <script>
@@ -128,14 +128,93 @@ $(document).ready(function() {
 	    $('#imageName2').html(imageName);
 	});
 	
-	$('#updateProductForm').on('submit', function(e) {
-		e.preventDefault();
-		let url=$(this).attr('action');
-		let params = $(this).serialize();
-		$.post(url, params)
-		.done(function() {
-			alert("수정완료");
-		})
+	$('#updateProductBtn').on('click', function() {
+		let id = $('#id').val();
+		let name = $('#name').val().trim();
+		let categoryId = $('#selectCategory').val();
+		let artist = $('#artist').val().trim();
+		let producer = $('#producer').val().trim();
+		let price = $('#price').val().trim();
+		let stock = $('#stock').val().trim();
+		let releaseDate = $('#releaseDate').val();
+		let detail = $('#detail').val();
+		let image1 = $('#image1').val();
+		let image2 = $('#image2').val();
+		
+		if (name == "") {
+			alert("앨범명을 입력하세요");
+			return false;
+		}
+		if (artist == "") {
+			alert("가수명을 입력하세요");
+			return false;
+		}
+		if (producer == "") {
+			alert("제작사를 입력하세요");
+			return false;
+		}
+		if (price == "") {
+			alert("가격을 입력하세요");
+			return false;
+		}
+		if (stock == "") {
+			alert("재고를 입력하세요");
+			return false;
+		}
+		if (releaseDate == "") {
+			alert("발매일을 입력하세요");
+			return false;
+		}
+		if (image1 == "") {
+			alert("이미지1(썸네일)을 입력하세요");
+			return false;
+		}
+			
+		let ext1 = image1.split(".").pop().toLowerCase();
+		if ($.inArray(ext1, ['jpg', 'jpeg', 'png', 'gif']) == -1) {
+			alert("이미지 파일만 업로드 할 수 있습니다.");
+			$('#image1').val("");
+			return false;
+		}
+		if (image2 != "") {
+			let ext2 = image2.split(".").pop().toLowerCase();
+			if ($.inArray(ext2, ['jpg', 'jpeg', 'png', 'gif']) == -1) {
+				alert("이미지 파일만 업로드 할 수 있습니다.");
+				$('#image2').val("");
+				return false;
+			}	
+		}
+				
+		let formData = new FormData();
+		formData.append("id", id);
+		formData.append("name", name);
+		formData.append("categoryId", categoryId);
+		formData.append("artist", artist);
+		formData.append("producer", producer);
+		formData.append("price", price);
+		formData.append("stock", stock);
+		formData.append("releaseDate", releaseDate);
+		formData.append("detail", detail);
+		formData.append("image1", $('#image1')[0].files[0]);
+		formData.append("image2", $('#image2')[0].files[0]);
+		
+		$.ajax({
+			type:"post"
+			, url:"/admin/a/update_product"
+			, data:formData
+			, enctype:"multipart/form-data"
+			, processData:false
+			, contentType:false
+			, success: function(data) {
+				if (data.code == 1) {
+					alert('상품이 수정되었습니다.');
+					location.href = "/admin/a/product_list_view";
+				} 
+			}
+			, error:function(request, status, error) {
+				alert("상품수정에 실패했습니다.");
+			}
+		});
 	});
 });
 </script>
