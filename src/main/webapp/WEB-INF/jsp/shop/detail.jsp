@@ -118,7 +118,7 @@
 function cart_confirm() {
 	var cartConfirm = confirm("이미 장바구니에 상품이 담겨있습니다.\n수량 조정은 장바구니에서 가능합니다. 장바구니로 이동하시겠습니까?");
 	if (cartConfirm) {
-		location.href = "/user/cart_view";
+		location.href = "/user/ucart_view";
 	}		
 }
 $(document).ready(function() {
